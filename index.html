@@ -19,7 +19,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -29,7 +28,7 @@
     overflow-x: hidden;
   }
 
-  /* ─── NAV ─── */
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -72,7 +71,7 @@
 
   .nav-links a:hover { color: var(--accent); }
 
-  /* ─── HERO ─── */
+  /* HERO */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -86,17 +85,16 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: 
+    background:
       radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26, 51, 83, 0.8) 0%, transparent 70%),
       radial-gradient(ellipse 50% 80% at 10% 80%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
       linear-gradient(160deg, #0d1b2e 0%, #0a1628 50%, #05101e 100%);
   }
 
-  /* Animated grid lines */
   .hero-grid {
     position: absolute;
     inset: 0;
-    background-image: 
+    background-image:
       linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
     background-size: 60px 60px;
@@ -108,7 +106,6 @@
     100% { transform: translateY(60px); }
   }
 
-  /* Decorative vertical line */
   .hero-line {
     position: absolute;
     left: 56px;
@@ -225,7 +222,6 @@
     color: var(--accent);
   }
 
-  /* Stats bar */
   .hero-stats {
     position: relative;
     margin-top: 72px;
@@ -256,15 +252,13 @@
     font-weight: 700;
   }
 
-  /* ─── EXPERTISE ─── */
+  /* SECTIONS */
   .section {
     padding: 100px 60px;
     position: relative;
   }
 
-  .section-header {
-    margin-bottom: 64px;
-  }
+  .section-header { margin-bottom: 64px; }
 
   .section-label {
     font-size: 0.75rem;
@@ -293,10 +287,8 @@
     max-width: 600px;
   }
 
-  /* Services */
-  .services-bg {
-    background: #060f1c;
-  }
+  /* SERVICES */
+  .services-bg { background: #060f1c; }
 
   .services-grid {
     display: grid;
@@ -355,10 +347,8 @@
     font-weight: 300;
   }
 
-  /* About */
-  .about-section {
-    background: var(--navy);
-  }
+  /* ABOUT */
+  .about-section { background: var(--navy); }
 
   .about-grid {
     display: grid;
@@ -417,10 +407,7 @@
     font-size: 0.92rem;
   }
 
-  /* Right panel decorative */
-  .about-visual {
-    position: relative;
-  }
+  .about-visual { position: relative; }
 
   .about-card {
     background: linear-gradient(135deg, var(--deep-blue), #0e2240);
@@ -431,7 +418,7 @@
   }
 
   .about-card::after {
-    content: '"';
+    content: '\201C';
     font-family: 'Playfair Display', serif;
     font-size: 18rem;
     color: rgba(201, 168, 76, 0.05);
@@ -460,16 +447,13 @@
     font-weight: 700;
   }
 
-  /* Focus areas */
-  .focus-section {
-    background: var(--deep-blue);
-  }
+  /* FOCUS */
+  .focus-section { background: var(--deep-blue); }
 
   .focus-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
-    margin-top: 0;
   }
 
   .focus-item {
@@ -478,9 +462,7 @@
     transition: border-color 0.3s;
   }
 
-  .focus-item:hover {
-    border-color: rgba(201, 168, 76, 0.4);
-  }
+  .focus-item:hover { border-color: rgba(201, 168, 76, 0.4); }
 
   .focus-dot {
     width: 10px;
@@ -504,7 +486,7 @@
     font-weight: 300;
   }
 
-  /* Contact */
+  /* CONTACT */
   .contact-section {
     background: #060f1c;
     text-align: center;
@@ -536,9 +518,7 @@
     margin-bottom: 48px;
   }
 
-  .contact-item {
-    text-align: center;
-  }
+  .contact-item { text-align: center; }
 
   .contact-label {
     font-size: 0.72rem;
@@ -555,7 +535,7 @@
     font-weight: 300;
   }
 
-  /* Footer */
+  /* FOOTER */
   footer {
     background: #03080f;
     padding: 36px 60px;
@@ -581,7 +561,7 @@
     letter-spacing: 0.5px;
   }
 
-  /* Scroll reveal */
+  /* REVEAL */
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -593,7 +573,7 @@
     transform: translateY(0);
   }
 
-  /* Mobile */
+  /* MOBILE */
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
@@ -666,12 +646,12 @@
   <div class="services-grid">
     <div class="service-card reveal">
       <div class="service-num">01</div>
-      <div class="service-title">Policy Research & Analysis</div>
+      <div class="service-title">Policy Research &amp; Analysis</div>
       <p class="service-desc">Rigorous legislative analysis, bill tracking, and policy evaluation for state agencies and municipal governments. Turning complex policy into clear, actionable intelligence.</p>
     </div>
     <div class="service-card reveal">
       <div class="service-num">02</div>
-      <div class="service-title">Grant Writing & Management</div>
+      <div class="service-title">Grant Writing &amp; Management</div>
       <p class="service-desc">End-to-end grant support from application drafting to compliance reporting. Backed by experience managing $18M+ in federal and international program portfolios.</p>
     </div>
     <div class="service-card reveal">
@@ -691,7 +671,7 @@
     </div>
     <div class="service-card reveal">
       <div class="service-num">06</div>
-      <div class="service-title">Equity & DEIA Consulting</div>
+      <div class="service-title">Equity &amp; DEIA Consulting</div>
       <p class="service-desc">Equity assessments and DEIA strategic plans informed by real government experience, including work with the White House Office of DEIA.</p>
     </div>
   </div>
@@ -705,19 +685,18 @@
       <h2 style="margin-bottom: 28px;">Government Expertise.<br>Real Results.</h2>
       <p>Jean-Pierre Policy Group is a Quincy, Massachusetts-based policy consulting firm led by <strong>Ervens Jean-Pierre</strong>, a senior policy analyst with experience spanning federal, state, and local government — as well as international development.</p>
       <p>From the Massachusetts State Senate to the White House, from USAID-funded programs in Haiti to municipal budget cycles in Maryland, we bring the kind of cross-sector perspective that most consultants simply don't have.</p>
-
       <div class="credentials">
         <div class="credential-item">
           <div class="cred-icon">🏛</div>
           <div class="cred-text">
             <strong>White House — Office of DEIA</strong>
-            Federal executive experience in diversity, equity & inclusion policy
+            Federal executive experience in diversity, equity &amp; inclusion policy
           </div>
         </div>
         <div class="credential-item">
           <div class="cred-icon">🌐</div>
           <div class="cred-text">
-            <strong>USAID & UN Foundation</strong>
+            <strong>USAID &amp; UN Foundation</strong>
             $18M+ in international development program management
           </div>
         </div>
@@ -756,17 +735,17 @@
   <div class="focus-grid">
     <div class="focus-item reveal">
       <div class="focus-dot"></div>
-      <div class="focus-title">Housing & Land Use</div>
+      <div class="focus-title">Housing &amp; Land Use</div>
       <p class="focus-desc">Policy analysis and planning for affordable housing, zoning reform, and equitable community development.</p>
     </div>
     <div class="focus-item reveal">
       <div class="focus-dot"></div>
-      <div class="focus-title">Migration & Refugee Policy</div>
+      <div class="focus-title">Migration &amp; Refugee Policy</div>
       <p class="focus-desc">Expertise in refugee resettlement, immigration policy, and supporting newcomer integration across state agencies.</p>
     </div>
     <div class="focus-item reveal">
       <div class="focus-dot"></div>
-      <div class="focus-title">Clean Energy & Climate</div>
+      <div class="focus-title">Clean Energy &amp; Climate</div>
       <p class="focus-desc">Legislative tracking and policy support for clean energy transition and climate resilience programs in Massachusetts.</p>
     </div>
     <div class="focus-item reveal">
@@ -776,7 +755,7 @@
     </div>
     <div class="focus-item reveal">
       <div class="focus-dot"></div>
-      <div class="focus-title">Economic & Workforce Development</div>
+      <div class="focus-title">Economic &amp; Workforce Development</div>
       <p class="focus-desc">Research and strategy supporting workforce equity, job creation, and economic opportunity in underserved communities.</p>
     </div>
     <div class="focus-item reveal">
@@ -793,7 +772,6 @@
     <div class="section-label reveal" style="justify-content: center;">Let's Work Together</div>
     <h2 class="reveal">Ready to Start a Conversation?</h2>
     <p class="contact-sub reveal">Whether you're a state agency, municipality, or organization seeking expert policy support, we're here to help you move from analysis to action.</p>
-
     <div class="contact-details reveal">
       <div class="contact-item">
         <div class="contact-label">Phone</div>
@@ -808,7 +786,6 @@
         <div class="contact-value">Quincy, Massachusetts</div>
       </div>
     </div>
-
     <div class="reveal">
       <a href="mailto:ervens@jppolicygroup.com" class="btn-primary">Send a Message</a>
     </div>
@@ -818,18 +795,15 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">Jean-Pierre<span>.</span>Policy Group</div>
-  <div class="footer-copy">© 2026 Jean-Pierre Policy Group · Quincy, Massachusetts · Policy Research &amp; Strategic Analysis for Government</div>
+  <div class="footer-copy">&#169; 2026 Jean-Pierre Policy Group &middot; Quincy, Massachusetts &middot; Policy Research &amp; Strategic Analysis for Government</div>
 </footer>
 
 <script>
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
         observer.unobserve(entry.target);
       }
     });
