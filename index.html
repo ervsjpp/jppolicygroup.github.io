@@ -178,14 +178,9 @@ footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-b
 .footer-copy{font-size:0.75rem;color:#2a3a4a;font-weight:300;}
 
 /* REVEAL */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
-.reveal.up{opacity:1;transform:translateY(0);}
-/* Fallback: ensure content is never permanently hidden */
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;}}
-.reveal-delay-1{transition-delay:0.1s;}
-.reveal-delay-2{transition-delay:0.2s;}
-.reveal-delay-3{transition-delay:0.3s;}
-.reveal-delay-4{transition-delay:0.4s;}
+.reveal{opacity:1;transform:none;}
+.reveal.up{opacity:1;transform:none;}
+.reveal-delay-1,.reveal-delay-2,.reveal-delay-3,.reveal-delay-4{opacity:1;}
 
 /* MOBILE */
 @media(max-width:900px){
@@ -207,6 +202,72 @@ footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-b
   .focus-header{grid-template-columns:1fr;}
   .pub-inner{grid-template-columns:1fr;gap:32px;}
 }
+
+/* ── HAMBURGER (phone only) ───────────────────────────────────── */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:6px;background:none;border:none;cursor:pointer;padding:8px;z-index:300;flex-shrink:0;}
+.hamburger span{display:block;width:26px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s ease;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(8,21,42,0.98);backdrop-filter:blur(16px);z-index:250;flex-direction:column;justify-content:center;align-items:center;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:1.25rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;padding:22px 60px;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,0.07);transition:color 0.2s,background 0.2s;}
+.mobile-menu a:first-child{border-top:1px solid rgba(255,255,255,0.07);}
+.mobile-menu a:hover{color:var(--gold);background:rgba(184,150,62,0.06);}
+.mobile-menu .mobile-cta{margin-top:36px;background:var(--gold);color:var(--navy) !important;font-weight:700;border:none;border-top:none;}
+.svc{cursor:pointer;}
+.svc-learn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;position:relative;z-index:1;}
+.svc-learn::after{content:'\2192';display:inline-block;transition:transform 0.2s;}
+.svc:hover .svc-learn::after{transform:translateX(5px);}
+.focus-card{cursor:pointer;}
+.focus-learn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.focus-learn::after{content:'\2192';display:inline-block;transition:transform 0.2s;}
+.focus-card:hover .focus-learn::after{transform:translateX(5px);}
+.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(4,9,20,0.93);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{background:var(--navy2);border:1px solid rgba(184,150,62,0.25);max-width:700px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(20px);transition:transform 0.35s ease;}
+.modal-overlay.open .modal-box{transform:translateY(0);}
+.modal-top{background:var(--navy);padding:44px 52px 36px;border-bottom:1px solid rgba(184,150,62,0.15);position:relative;}
+.modal-icon{font-size:2.6rem;margin-bottom:18px;display:block;line-height:1;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.1;}
+.modal-tag{font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.modal-close{position:absolute;top:22px;right:26px;background:none;border:none;color:var(--muted);font-size:1.6rem;cursor:pointer;line-height:1;transition:color 0.2s;padding:4px 8px;}
+.modal-close:hover{color:var(--gold);}
+.modal-body{padding:44px 52px 52px;}
+.modal-section{margin-bottom:32px;}
+.modal-section-label{font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.modal-section-label::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0;}
+.modal-section p{font-size:0.93rem;color:var(--text);line-height:1.9;font-weight:300;}
+.modal-steps{list-style:none;margin-top:12px;}
+.modal-steps li{display:flex;gap:18px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.89rem;color:var(--text);line-height:1.65;font-weight:300;}
+.modal-steps li:last-child{border-bottom:none;}
+.modal-step-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;min-width:24px;}
+.modal-cta-link{display:inline-block;background:var(--gold);color:var(--navy);padding:15px 40px;font-size:0.79rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;text-decoration:none;margin-top:12px;transition:background 0.25s;}
+.modal-cta-link:hover{background:var(--gold-light);}
+.modal-box::-webkit-scrollbar{width:3px;}
+.modal-box::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+@media(max-width:600px){
+  nav{padding:18px 20px;}nav.scrolled{padding:12px 20px;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  #hero{padding:0 20px 80px;}
+  .hero-line{left:20px;}
+  .hero-content{padding-left:16px;}
+  h1 .line2{padding-left:16px;}h1 .line3{padding-left:32px;}
+  .hero-stats{display:none;}
+  #services,#focus,#publications,.contact-body{padding:64px 20px;}
+  .about-hero-text{padding:32px 20px;}
+  .about-body{grid-template-columns:1fr;padding:40px 20px 64px;}
+  .contact-bg-text{padding:32px 20px;}
+  footer{flex-direction:column;gap:20px;text-align:center;padding:32px 20px;}
+  .footer-links{display:none;}
+  .services-grid,.focus-grid,.contact-grid{grid-template-columns:1fr;}
+  .services-header{flex-direction:column;}
+  .focus-header{grid-template-columns:1fr;}
+  .pub-inner{grid-template-columns:1fr;gap:32px;}
+  .modal-top{padding:32px 24px 28px;}
+  .modal-body{padding:32px 24px 40px;}
+}
 </style>
 </head>
 <body>
@@ -221,7 +282,19 @@ footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-b
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Work With Us</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#focus" class="mobile-link">Expertise</a>
+  <a href="#publications" class="mobile-link">Publications</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="mobile-link mobile-cta">Work With Us</a>
+</div>
 
 <!-- HERO — Boston skyline -->
 <section id="hero">
@@ -282,43 +355,49 @@ footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-b
         <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=50&fit=crop')"></div>
         <div class="svc-num">01</div>
         <span class="svc-icon">📋</span>
-        <div class="svc-title">Policy Research &amp; Analysis</div>
+        <div class="svc-title" data-modal="svc1">Policy Research &amp; Analysis</div>
         <p class="svc-desc">Rigorous legislative analysis, bill tracking, and policy evaluation for state agencies and municipal governments. Turning complex policy into clear, actionable intelligence &mdash; with a 95% on-time delivery rate.</p>
+        <span class="svc-learn">Learn More</span>
       </div>
       <div class="svc reveal reveal-delay-2">
         <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=50&fit=crop')"></div>
         <div class="svc-num">02</div>
         <span class="svc-icon">✍️</span>
-        <div class="svc-title">Grant Writing &amp; Management</div>
+        <div class="svc-title" data-modal="svc2">Grant Writing &amp; Management</div>
         <p class="svc-desc">End-to-end grant support from application drafting to compliance reporting. Backed by direct experience co-managing a $15M+ international development portfolio across government and multilateral partners.</p>
+        <span class="svc-learn">Learn More</span>
       </div>
       <div class="svc reveal reveal-delay-3">
         <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=50&fit=crop')"></div>
         <div class="svc-num">03</div>
         <span class="svc-icon">📊</span>
-        <div class="svc-title">Program Evaluation</div>
+        <div class="svc-title" data-modal="svc3">Program Evaluation</div>
         <p class="svc-desc">Independent, evidence-based assessment of government programs &mdash; measuring outcomes against goals and delivering clear recommendations that inform funding decisions and policy direction.</p>
+        <span class="svc-learn">Learn More</span>
       </div>
       <div class="svc reveal reveal-delay-1">
         <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=50&fit=crop')"></div>
         <div class="svc-num">04</div>
         <span class="svc-icon">🗺️</span>
-        <div class="svc-title">Strategic Planning</div>
+        <div class="svc-title" data-modal="svc4">Strategic Planning</div>
         <p class="svc-desc">Long-range strategic roadmaps for agencies and municipalities, built with stakeholder alignment from day one. We redesigned legislative systems that cut turnaround time by 40% and created real-time coordination capacity.</p>
+        <span class="svc-learn">Learn More</span>
       </div>
       <div class="svc reveal reveal-delay-2">
         <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=50&fit=crop')"></div>
         <div class="svc-num">05</div>
         <span class="svc-icon">🤝</span>
-        <div class="svc-title">Community Engagement</div>
+        <div class="svc-title" data-modal="svc5">Community Engagement</div>
         <p class="svc-desc">Designing inclusive public participation processes connecting underrepresented voices to the decisions that shape their lives. We've organized 30+ stakeholder meetings across legislators, utilities, and advocacy groups.</p>
+        <span class="svc-learn">Learn More</span>
       </div>
       <div class="svc reveal reveal-delay-3">
         <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=50&fit=crop')"></div>
         <div class="svc-num">06</div>
         <span class="svc-icon">⚖️</span>
-        <div class="svc-title">Equity &amp; DEIA Consulting</div>
+        <div class="svc-title" data-modal="svc6">Equity &amp; DEIA Consulting</div>
         <p class="svc-desc">Equity assessments and DEIA strategic plans grounded in real federal experience &mdash; including work within the White House Office of Administration, where we developed the office's first institutional equity materials.</p>
+        <span class="svc-learn">Learn More</span>
       </div>
     </div>
   </div>
@@ -417,33 +496,39 @@ footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-b
     <div class="focus-grid">
       <div class="focus-card reveal reveal-delay-1">
         <span class="focus-icon">🏙️</span>
-        <div class="focus-title">Municipal Governance</div>
+        <div class="focus-title" data-modal="foc1">Municipal Governance</div>
         <p class="focus-desc">Practical policy support for cities and towns across Massachusetts &mdash; from legislative monitoring to strategic planning and council-level analysis. Experienced directing research on 50+ active bills across infrastructure, housing, and social services.</p>
+        <span class="focus-learn">Learn More</span>
       </div>
       <div class="focus-card reveal reveal-delay-2">
         <span class="focus-icon">🛂</span>
-        <div class="focus-title">Migration &amp; Refugee Policy</div>
+        <div class="focus-title" data-modal="foc2">Migration &amp; Refugee Policy</div>
         <p class="focus-desc">Deep expertise in refugee resettlement, immigration policy, and newcomer integration across state agencies. Haiti diaspora networks, federal advocacy coalitions, and direct experience with migration-focused legislative analysis.</p>
+        <span class="focus-learn">Learn More</span>
       </div>
       <div class="focus-card reveal reveal-delay-3">
         <span class="focus-icon">⚡</span>
-        <div class="focus-title">Clean Energy &amp; Climate</div>
+        <div class="focus-title" data-modal="foc3">Clean Energy &amp; Climate</div>
         <p class="focus-desc">Legislative tracking and policy support for clean energy transition and climate resilience in Massachusetts. Direct experience with the Northeast Clean Energy Council and environmental justice advocacy coalitions.</p>
+        <span class="focus-learn">Learn More</span>
       </div>
       <div class="focus-card reveal reveal-delay-1">
         <span class="focus-icon">🌍</span>
-        <div class="focus-title">International Development</div>
+        <div class="focus-title" data-modal="foc4">International Development</div>
         <p class="focus-desc">Governance, anti-corruption, and program evaluation for Haiti and Caribbean development initiatives. Built on direct management of USAID and UN programs across government, multilateral, and donor partners.</p>
+        <span class="focus-learn">Learn More</span>
       </div>
       <div class="focus-card reveal reveal-delay-2">
         <span class="focus-icon">💼</span>
-        <div class="focus-title">Economic &amp; Workforce Development</div>
+        <div class="focus-title" data-modal="foc5">Economic &amp; Workforce Development</div>
         <p class="focus-desc">Research and strategy supporting workforce equity, job creation, and economic opportunity in underserved communities &mdash; with an equity lens embedded in every deliverable.</p>
+        <span class="focus-learn">Learn More</span>
       </div>
       <div class="focus-card reveal reveal-delay-3">
         <span class="focus-icon">🏘️</span>
-        <div class="focus-title">Housing &amp; Land Use</div>
+        <div class="focus-title" data-modal="foc6">Housing &amp; Land Use</div>
         <p class="focus-desc">Policy analysis and planning for affordable housing, zoning reform, and equitable community development &mdash; including direct collaboration with the City of Boston Mayor's Office on housing access and voting rights expansion.</p>
+        <span class="focus-learn">Learn More</span>
       </div>
     </div>
   </div>
@@ -523,6 +608,8 @@ footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-b
   </div>
 </section>
 
+<div class="modal-overlay" id="modalOverlay"><div class="modal-box"><div class="modal-top"><button class="modal-close" id="modalClose" aria-label="Close">&#x2715;</button><span class="modal-icon" id="modalIcon"></span><div class="modal-title" id="modalTitle"></div><div class="modal-tag" id="modalTag"></div></div><div class="modal-body" id="modalBody"></div></div></div>
+
 <footer>
   <div class="footer-logo">Jean-Pierre<span>.</span>Policy Group</div>
   <ul class="footer-links">
@@ -535,27 +622,91 @@ footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-b
 </footer>
 
 <script>
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
+var modalData = {
+  svc1:{icon:'📋',tag:'Service 01',title:'Policy Research & Analysis',what:'We track legislation, analyze bills, review regulations, and produce issue briefs that give your team a clear picture of what is happening, what it means, and what to do next. We cover federal, state, and local policy, and we write everything in plain language your team can actually use.',why:'Most organizations do not have the capacity to monitor policy developments in real time. When you miss a bill, a regulation change, or an emerging issue, you are always reacting instead of leading. Our research keeps you ahead of the curve so you can make decisions with confidence.',process:['Scope the policy landscape with you and identify your priorities','Monitor legislation and regulatory developments on an ongoing basis','Analyze implications specific to your organization or community','Deliver clear, concise briefs, memos, or reports on your timeline','Available for one-time projects or ongoing retainer support']},
+  svc2:{icon:'✍️',tag:'Service 02',title:'Grant Writing & Management',what:'We write competitive grant applications and manage the full compliance cycle from start to finish. We work with federal, state, and private funders, and we bring direct experience overseeing a $15M+ international development portfolio to every engagement.',why:'A strong program with a weak application does not get funded. And winning a grant is only the beginning. Compliance, reporting, and documentation require sustained attention. We handle both sides so your team can focus on the work.',process:['Identify funding opportunities aligned with your mission and eligibility','Develop the narrative, budget, and all supporting materials','Review and refine drafts with your team before submission','Manage compliance, reporting, and funder communication post-award','Build internal capacity so your team is stronger for the next cycle']},
+  svc3:{icon:'📊',tag:'Service 03',title:'Program Evaluation',what:'We assess whether your programs are working, identify what is and is not effective, and deliver findings you can act on. Our evaluations are evidence-based, independent, and written in plain language, not buried in academic jargon.',why:'Funders require it. Leadership needs it. Communities deserve to know whether programs designed to serve them are actually doing so. A good evaluation does not just measure outcomes, it tells you what to fix and how.',process:['Define evaluation questions with your team and stakeholders','Design the methodology: surveys, interviews, data review, site visits','Collect and analyze qualitative and quantitative data','Identify gaps, strengths, and specific recommendations','Deliver a final report written for your audience, not an academic journal']},
+  svc4:{icon:'🗺️',tag:'Service 04',title:'Strategic Planning',what:'We help agencies and organizations build long-range plans that are realistic, aligned with stakeholder priorities, and designed to actually be implemented. We have redesigned legislative and operational systems that cut turnaround time by 40% for past clients.',why:'Most strategic plans sit on a shelf. That happens when the planning process does not involve the right people or connect to budget realities. We build plans that stick because we build them with the people who have to carry them out.',process:['Conduct an organizational assessment and environmental scan','Facilitate stakeholder sessions to surface priorities and concerns','Develop strategic goals, objectives, and action steps','Align the plan with available resources and realistic timelines','Build in accountability structures and clear progress checkpoints']},
+  svc5:{icon:'🤝',tag:'Service 05',title:'Community Engagement',what:'We design and facilitate participation processes that reach the people most affected by policy decisions, not just the usual voices in the room. We have organized 30+ stakeholder meetings across government agencies, utilities, nonprofits, and advocacy organizations.',why:'Decisions made without community input tend to fail at implementation or lose public trust. Genuine engagement is not just good practice, it is increasingly required by funders, regulators, and the communities themselves.',process:['Map your stakeholder landscape and identify underrepresented groups','Design an engagement strategy appropriate to the decision and timeline','Facilitate meetings, focus groups, or public comment processes','Synthesize community input into clear findings for decision-makers','Document the process to satisfy funder and regulatory requirements']},
+  svc6:{icon:'⚖️',tag:'Service 06',title:'Equity & DEIA Consulting',what:'We help organizations build equity into how they operate, not just what they say. Our approach is grounded in direct experience developing institutional equity and accessibility materials inside the White House Office of Administration, work that was adopted by multiple federal agencies.',why:'An equity statement is not an equity strategy. Organizations that want to close gaps in outcomes, access, and representation need structured plans, internal buy-in, and accountability. We help you get from commitment to practice.',process:['Conduct an equity assessment of policies, practices, and outcomes','Identify gaps between stated values and operational reality','Develop a DEIA strategic plan with specific, measurable goals','Support implementation through staff training and process redesign','Build reporting frameworks so progress is tracked and communicated']},
+  foc1:{icon:'🏙️',tag:'Area of Expertise',title:'Municipal Governance',what:'We provide practical, hands-on policy support for cities and towns across Massachusetts, from ongoing legislative monitoring to strategic planning and council-level analysis. We have directed research on 50+ active bills spanning infrastructure, housing, and social services.',why:'Municipal staff are often stretched thin, covering multiple portfolios with limited research capacity. A trusted outside partner who understands local government and can turn around clear, actionable analysis quickly makes a real difference in the quality of decisions being made.',process:['Monitor state and federal legislation for local government impacts','Provide bill summaries, fiscal notes, and policy recommendations for council','Support the development of local ordinances and resolutions','Facilitate strategic planning processes for departments and leadership','Engage residents and stakeholders on priority policy issues']},
+  foc2:{icon:'🛂',tag:'Area of Expertise',title:'Migration & Refugee Policy',what:'We bring deep expertise in refugee resettlement, immigration policy, and newcomer integration across state agencies and advocacy networks. Our principal has worked directly with Haiti diaspora coalitions, federal advocacy organizations, and migration-focused legislative offices.',why:'Migration policy sits at the intersection of federal law, state administration, and local service delivery, and the landscape changes fast. Organizations in this space need a partner who understands the full policy environment and can translate it into practical guidance.',process:['Track federal and state legislative developments on migration and resettlement','Analyze policy implications for local agencies, nonprofits, and communities','Produce issue briefs and policy memos for advocacy or administrative use','Support community engagement processes with newcomer populations','Advise on grant opportunities aligned with resettlement and integration work']},
+  foc3:{icon:'⚡',tag:'Area of Expertise',title:'Clean Energy & Climate',what:'We provide legislative tracking and policy support for clean energy transition and climate resilience work in Massachusetts. Our principal organized 30+ stakeholder meetings with legislators, utilities, clean energy startups, and environmental justice organizations at the Northeast Clean Energy Council.',why:'Clean energy policy moves quickly and touches multiple sectors simultaneously. Organizations in this space need someone who can track legislation, understand the stakeholder landscape, and communicate policy implications clearly to both technical and non-technical audiences.',process:['Track state and federal clean energy and climate legislation','Analyze environmental justice implications of energy policy proposals','Facilitate stakeholder engagement across utilities, advocates, and government','Produce policy briefs and testimony for legislative and regulatory proceedings','Support grant applications for clean energy and resilience initiatives']},
+  foc4:{icon:'🌍',tag:'Area of Expertise',title:'International Development',what:'We bring direct experience managing governance, anti-corruption, and program evaluation work for Haiti and Caribbean development initiatives, including co-managing a $15M+ portfolio at the UN Foundation and a $3M+ USAID-funded program at Dexis Consulting.',why:'International development work requires navigating complex stakeholder environments, donor requirements, and host government relationships simultaneously. Our principal has done this work on the ground and understands both the policy and operational dimensions.',process:['Conduct policy and context analysis for program design and adaptation','Support program evaluation and monitoring frameworks','Produce donor reports, policy briefs, and stakeholder communications','Advise on governance and anti-corruption program strategies','Support proposals for USAID, State Department, and multilateral funders']},
+  foc5:{icon:'💼',tag:'Area of Expertise',title:'Economic & Workforce Development',what:'We provide research and strategy support for workforce equity, job creation, and economic opportunity programs serving underserved communities. Every analysis we produce integrates an equity lens, examining who benefits, who is left out, and what systemic barriers need to be addressed.',why:'Workforce and economic development programs often have strong intentions but weak connections to the people they are meant to serve. Policy analysis that centers equity helps organizations design programs that actually close gaps instead of reinforcing them.',process:['Analyze labor market conditions and workforce policy trends','Assess program design for equity gaps and implementation barriers','Produce research reports and policy recommendations for funders and leadership','Support community engagement with workers and residents','Advise on grant opportunities in workforce and economic development']},
+  foc6:{icon:'🏘️',tag:'Area of Expertise',title:'Housing & Land Use',what:"We provide policy analysis and planning support for affordable housing, zoning reform, and equitable community development. Our principal led a housing policy study in direct collaboration with the City of Boston Mayor's Office on voting rights and housing access for non-citizens.",why:'Housing is one of the most politically complex and consequential policy areas in Massachusetts. Communities need analysis that is legally grounded, community-informed, and clear enough to inform real decisions, not just position papers.',process:['Analyze zoning codes and land use policies for equity and affordability impacts','Track state and local housing legislation and regulatory changes','Support community engagement processes on housing and development decisions','Produce policy briefs and recommendations for municipal leadership','Advise on affordable housing program design and grant strategy']}
+};
+
+var overlay = document.getElementById('modalOverlay');
+var modalClose = document.getElementById('modalClose');
+
+function openModal(id) {
+  var d = modalData[id];
+  if (!d) return;
+  document.getElementById('modalIcon').textContent = d.icon;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalTag').textContent = d.tag;
+  var steps = d.process.map(function(s,i){ return '<li><span class="modal-step-num">'+(i+1)+'</span><span>'+s+'</span></li>'; }).join('');
+  document.getElementById('modalBody').innerHTML =
+    '<div class="modal-section"><div class="modal-section-label">What We Do</div><p>'+d.what+'</p></div>'+
+    '<div class="modal-section"><div class="modal-section-label">Why It Matters</div><p>'+d.why+'</p></div>'+
+    '<div class="modal-section"><div class="modal-section-label">How We Work</div><ol class="modal-steps">'+steps+'</ol></div>'+
+    '<a href="#contact" class="modal-cta-link" id="modalCtaLink">Work With Us</a>';
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  var cta = document.getElementById('modalCtaLink');
+  if (cta) cta.addEventListener('click', closeModal);
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (modalClose) modalClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+document.querySelectorAll('.svc').forEach(function(card){
+  var el = card.querySelector('[data-modal]');
+  if (el) card.addEventListener('click', function(){ openModal(el.getAttribute('data-modal')); });
 });
-const revealEls = document.querySelectorAll('.reveal');// Robust reveal on scroll
+document.querySelectorAll('.focus-card').forEach(function(card){
+  var el = card.querySelector('[data-modal]');
+  if (el) card.addEventListener('click', function(){ openModal(el.getAttribute('data-modal')); });
+});
+
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', function(){
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+var revealEls = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('up'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.05 });
-  revealEls.forEach(el => obs.observe(el));
-  // Also reveal anything already visible on page load
-  setTimeout(() => {
-    revealEls.forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight) el.classList.add('up');
-    });
-  }, 150);
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('up'); obs.unobserve(e.target); } });
+  }, {threshold:0.05});
+  revealEls.forEach(function(el){ obs.observe(el); });
+  setTimeout(function(){
+    revealEls.forEach(function(el){ if(el.getBoundingClientRect().top < window.innerHeight) el.classList.add('up'); });
+  }, 100);
 } else {
-  revealEls.forEach(el => el.classList.add('up'));
+  revealEls.forEach(function(el){ el.classList.add('up'); });
 }
 </script>
 </body>
