@@ -349,6 +349,31 @@ function closeModal() {
   var overlay = document.getElementById('modalOverlay');
   if (overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
 }
+
+function submitContactForm() {
+  var name    = (document.getElementById('cf-name').value || '').trim();
+  var email   = (document.getElementById('cf-email').value || '').trim();
+  var org     = (document.getElementById('cf-org').value || '').trim();
+  var message = (document.getElementById('cf-message').value || '').trim();
+  var status  = document.getElementById('cf-status');
+  if (!name || !email || !message) {
+    status.style.display = 'block';
+    status.style.color = '#e07070';
+    status.textContent = 'Please fill in your name, email, and message before sending.';
+    return;
+  }
+  var subject = encodeURIComponent('New Inquiry from ' + name + (org ? ' — ' + org : ''));
+  var body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    (org ? 'Organization: ' + org + '\n' : '') +
+    '\nMessage:\n' + message
+  );
+  window.location.href = 'mailto:ervens@jppolicygroup.com?subject=' + subject + '&body=' + body;
+  status.style.display = 'block';
+  status.style.color = '#b8963e';
+  status.textContent = 'Opening your email client — thank you for reaching out!';
+}
 </script>
 </head>
 <body>
@@ -674,7 +699,7 @@ function closeModal() {
       <div class="contact-card">
         <span class="contact-card-icon">✉️</span>
         <div class="contact-card-label">Email</div>
-        <div class="contact-card-value"><a href="/cdn-cgi/l/email-protection#22475054474c51624852524d4e4b415b45504d57520c414d4f" style="color:inherit;text-decoration:none;"><span class="__cf_email__" data-cfemail="61041317040f12210b11110e0d08021806130e14114f020e0c">[email&#160;protected]</span></a></div>
+        <div class="contact-card-value"><a href="mailto:ervens@jppolicygroup.com" style="color:inherit;text-decoration:none;">ervens@jppolicygroup.com</a></div>
       </div>
       <div class="contact-card">
         <span class="contact-card-icon">📍</span>
@@ -684,7 +709,30 @@ function closeModal() {
     </div>
     <div class="contact-cta reveal">
       <p>Whether you're a state agency, municipality, nonprofit, or organization seeking expert policy support &mdash;<br>we're here to help you move from analysis to action.</p>
-      <a href="/cdn-cgi/l/email-protection#03667175666d70436973736c6f6a607a64716c76732d606c6e" class="btn-gold"><span>Send a Message</span></a>
+      <div id="contactForm" style="max-width:600px;margin:0 auto;text-align:left;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div>
+            <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Your Name</label>
+            <input id="cf-name" type="text" placeholder="Full name" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
+          </div>
+          <div>
+            <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Your Email</label>
+            <input id="cf-email" type="email" placeholder="your@email.com" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Organization</label>
+          <input id="cf-org" type="text" placeholder="City, agency, or organization name" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
+        </div>
+        <div style="margin-bottom:24px;">
+          <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Message</label>
+          <textarea id="cf-message" rows="5" placeholder="Tell us how we can help..." style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'"></textarea>
+        </div>
+        <div style="text-align:center;">
+          <button onclick="submitContactForm()" class="btn-gold" style="border:none;cursor:pointer;font-family:'DM Sans',sans-serif;"><span>Send a Message</span></button>
+        </div>
+        <div id="cf-status" style="margin-top:16px;text-align:center;font-size:0.85rem;display:none;"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -702,7 +750,7 @@ function closeModal() {
   <div class="footer-copy">&#169; 2026 Jean-Pierre Policy Group &middot; Quincy, MA</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('modalOverlay').addEventListener('click', function(e){ if (e.target === this) closeModal(); });
