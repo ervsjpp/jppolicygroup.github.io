@@ -106,7 +106,7 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);f
 
 /* ABOUT */
 #about{padding:0;background:var(--navy2);}
-.about-hero{position:relative;height:400px;overflow:hidden;}
+.about-hero{position:relative;height:280px;overflow:hidden;}
 .about-hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1614853316476-de00d14cb1fc?w=1600&q=70&fit=crop') center 30%/cover no-repeat;}
 .about-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,21,42,0.2) 0%,rgba(13,31,60,1) 100%);}
 .about-hero-text{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:48px 64px;}
@@ -124,11 +124,6 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);f
 .cred-title{font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:4px;}
 .cred-sub{font-size:0.82rem;color:var(--muted);line-height:1.5;font-weight:300;}
 .cred-tag{font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:6px;display:inline-block;}
-.key-project{margin-top:48px;padding:32px;background:linear-gradient(135deg,rgba(26,58,107,0.4),rgba(8,21,42,0.6));border:1px solid rgba(184,150,62,0.2);position:relative;overflow:hidden;}
-.key-project::before{content:'★';position:absolute;top:-10px;right:20px;font-size:6rem;color:rgba(184,150,62,0.05);line-height:1;}
-.kp-label{font-size:0.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px;}
-.kp-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:10px;color:var(--white);}
-.kp-text{font-size:0.85rem;color:var(--muted);line-height:1.7;font-weight:300;}
 
 /* FOCUS */
 #focus{padding:120px 64px;background:#050d1a;}
@@ -272,6 +267,14 @@ footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-b
   .modal-top{padding:32px 24px 28px;}
   .modal-body{padding:32px 24px 40px;}
 }
+
+.pub-category{font-size:0.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:32px;margin-bottom:4px;padding-bottom:8px;border-bottom:1px solid rgba(184,150,62,0.2);display:flex;align-items:center;gap:12px;}
+.pub-category::before{content:'';width:16px;height:1px;background:var(--gold);flex-shrink:0;}
+.pub-category:first-child{margin-top:0;}
+.pub-item a{color:inherit;text-decoration:none;}
+.pub-item a:hover{color:var(--gold-light);}
+.pub-arrow{font-size:0.75rem;color:var(--gold);flex-shrink:0;opacity:0;transition:opacity 0.2s,transform 0.2s;margin-left:4px;}
+.pub-item:hover .pub-arrow{opacity:1;transform:translateX(3px);}
 </style>
 <script>
 var JPPG_MODALS = {
@@ -527,11 +530,6 @@ function submitContactForm() {
         &ldquo;The best policy work bridges the gap between research and real-world impact &mdash; informing decisions that improve lives in communities.&rdquo;
         <cite>&mdash; Ervens Jean-Pierre, Principal</cite>
       </blockquote>
-      <div class="key-project reveal" style="margin-top:40px;">
-        <div class="kp-label">&#9733; Featured Project</div>
-        <div class="kp-title">Municipal Voting for Non-Citizens &mdash; City of Boston</div>
-        <p class="kp-text">Led a policy study in collaboration with the Mayor's Office assessing municipal voting rights expansion for non-citizens with legal status. Delivered recommendations through legal research, stakeholder interviews, and SWOT analysis &mdash; identifying implementation pathways and governance considerations for mayoral decision-making.</p>
-      </div>
     </div>
     <div class="about-right reveal reveal-delay-2">
       <div class="label" style="margin-bottom:24px;">Credentials &amp; Experience</div>
@@ -645,36 +643,130 @@ function submitContactForm() {
   <div class="section-inner">
     <div class="pub-inner reveal">
       <div class="pub-left">
-        <div class="label">Publications</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.8rem);">Thought Leadership<br>in Policy</h2>
-        <p>Author of policy analyses, issue briefs, and commentary distributed to national advocacy coalitions and policymakers &mdash; establishing institutional thought leadership on governance, migration, and Haiti-related U.S. policy.</p>
+        <div class="label">Publications &amp; Work</div>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.8rem);">Policy Writing<br>&amp; Selected Work</h2>
+        <p>Published analysis, legislative work, and applied research spanning governance, international development, immigration, and domestic policy &mdash; distributed to advocacy coalitions, municipal leaders, and policymakers.</p>
       </div>
       <div class="pub-items">
+
+        <div class="pub-category">Published Articles</div>
+
         <div class="pub-item">
           <div class="pub-dot"></div>
-          <div class="pub-text">Governance, Migration &amp; Nonprofit Sector Policy &mdash; Haiti Policy House, distributed to national advocacy networks</div>
-          <div class="pub-tag">Ongoing</div>
+          <div class="pub-text">
+            <a href="https://www.haitipolicyhouse.org/post/financial-forensics-for-credible-elections-in-haiti" target="_blank" rel="noopener">
+              Financial Forensics for Credible Elections in Haiti &mdash; applying accountability frameworks to electoral integrity in fragile-state governance
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">Nov 2025</div>
         </div>
+
         <div class="pub-item">
           <div class="pub-dot"></div>
-          <div class="pub-text">Congressional briefing materials &amp; state legislative testimony &mdash; Howard County Council &amp; MA State Senate</div>
+          <div class="pub-text">
+            <a href="https://www.haitipolicyhouse.org/post/strategic-relevance-over-sympathy-haiti-s-next-move-in-u-s-foreign-policy" target="_blank" rel="noopener">
+              Strategic Relevance Over Sympathy: Haiti&rsquo;s Next Move in U.S. Foreign Policy &mdash; reframing bilateral engagement through a strategic interest lens
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">Apr 2025</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">
+            <a href="https://www.linkedin.com/pulse/why-institutional-reform-must-precede-constitutional-change-haiti" target="_blank" rel="noopener">
+              Why Institutional Reform Must Precede Constitutional Change in Haiti &mdash; sequencing governance reform for sustainable democratic transition
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">Jun 2025</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">
+            <a href="https://www.haitipolicyhouse.org/post/addressing-haiti-s-internal-displacement-crisis" target="_blank" rel="noopener">
+              Addressing Haiti&rsquo;s Internal Displacement Crisis &mdash; policy analysis of forced migration, shelter gaps, and humanitarian coordination failures
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">Jun 2024</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">
+            <a href="https://www.haitipolicyhouse.org/post/negotiating-stability-the-formation-of-haiti-s-presidential-council" target="_blank" rel="noopener">
+              Negotiating Stability: The Formation of Haiti&rsquo;s Presidential Council &mdash; analysis of transitional governance structures and power-sharing arrangements
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">Apr 2024</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">
+            <a href="https://www.linkedin.com/pulse/time-immigration-reform-now-ervens-jean-pierre" target="_blank" rel="noopener">
+              The Time for Immigration Reform Is Now &mdash; policy brief on U.S. immigration enforcement trends and the case for comprehensive legislative reform
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">May 2024</div>
+        </div>
+
+        <div class="pub-category">Legislative &amp; Government Work</div>
+
+        <div class="pub-item" style="background:rgba(184,150,62,0.06);border:1px solid rgba(184,150,62,0.18);padding:20px 20px;margin-bottom:4px;align-items:flex-start;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <div class="pub-dot"></div>
+            <div style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;">&#9733; Featured Project</div>
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-weight:600;color:var(--white);padding-left:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Municipal Voting for Non-Citizens &mdash; City of Boston Mayor&rsquo;s Office for Immigrant Advancement (MOIA)</div>
+          <div class="pub-text" style="padding-left:22px;">Led a policy study in direct collaboration with the Mayor&rsquo;s Office assessing municipal voting rights expansion for non-citizens with legal status. Delivered recommendations through legal research, stakeholder interviews, and SWOT analysis &mdash; identifying implementation pathways and governance considerations for mayoral decision-making.</div>
+          <div class="pub-tag" style="padding-left:22px;">2024 &middot; Featured</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">Testimony writing and legislative analysis &mdash; Massachusetts State Senate, Office of Sen. Liz Miranda. Issue briefs across public safety, education, and workforce equity.</div>
+          <div class="pub-tag">2024</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">Policy and legislative analysis &mdash; Howard County Council. Legislative drafting, bill tracking, feasibility assessment, and policy research supporting council members across infrastructure and social services portfolios.</div>
           <div class="pub-tag">2023&ndash;24</div>
         </div>
+
         <div class="pub-item">
           <div class="pub-dot"></div>
-          <div class="pub-text">Clean energy access &amp; environmental justice legislative briefs &mdash; Northeast Clean Energy Council</div>
+          <div class="pub-text">Survey and policy analysis &mdash; MBTA Orange Line equity, access, and affordability assessment focused on marginalized communities comprising a significant share of the ridership, with policy solutions for the Massachusetts Bay Transportation Authority.</div>
           <div class="pub-tag">2023</div>
         </div>
+
+        <div class="pub-category">Applied Research</div>
+
         <div class="pub-item">
           <div class="pub-dot"></div>
-          <div class="pub-text">Municipal voting rights for non-citizens &mdash; City of Boston Mayor's Office policy study</div>
-          <div class="pub-tag">Featured</div>
+          <div class="pub-text">Program assessment &mdash; social welfare program evaluation in an impoverished community in the Philippines, measuring outcomes and implementation gaps against program goals.</div>
+          <div class="pub-tag">2017</div>
         </div>
+
         <div class="pub-item">
           <div class="pub-dot"></div>
-          <div class="pub-text">Federal equity &amp; accessibility compliance frameworks &mdash; White House resource documents adopted by multiple agencies</div>
-          <div class="pub-tag">2023</div>
+          <div class="pub-text">Constitutional comparative analysis &mdash; Second Amendment rights framework compared across U.S. and Latin American constitutional language and legal interpretation. Conducted at the National Constitution Center.</div>
+          <div class="pub-tag">2018</div>
         </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">The Lumen Project &mdash; institution-wide racial climate survey at Washington College. Led research design, stakeholder engagement, and final report with conference presentation.</div>
+          <div class="pub-tag">2019</div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -699,7 +791,7 @@ function submitContactForm() {
       <div class="contact-card">
         <span class="contact-card-icon">✉️</span>
         <div class="contact-card-label">Email</div>
-        <div class="contact-card-value"><a href="mailto:ervens@jppolicygroup.com" style="color:inherit;text-decoration:none;">ervens@jppolicygroup.com</a></div>
+        <div class="contact-card-value"><a href="/cdn-cgi/l/email-protection#51342327343f22113b21213e3d38322836233e24217f323e3c" style="color:inherit;text-decoration:none;"><span class="__cf_email__" data-cfemail="36534440535845765c4646595a5f554f51445943461855595b">[email&#160;protected]</span></a></div>
       </div>
       <div class="contact-card">
         <span class="contact-card-icon">📍</span>
@@ -750,7 +842,7 @@ function submitContactForm() {
   <div class="footer-copy">&#169; 2026 Jean-Pierre Policy Group &middot; Quincy, MA</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('modalOverlay').addEventListener('click', function(e){ if (e.target === this) closeModal(); });
@@ -761,18 +853,4 @@ if (hamburger && mobileMenu) {
   hamburger.addEventListener('click', function(){
     hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
-    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-  });
-  document.querySelectorAll('.mobile-link').forEach(function(link){
-    link.addEventListener('click', function(){
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-}
-
-var nav = document.getElementById('nav');
-window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 60); });
-
-var revealEls = d
+    document.
