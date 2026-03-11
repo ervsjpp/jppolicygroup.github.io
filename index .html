@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jean-Pierre Policy Group | Policy Consulting for Government & Municipalities</title>
+<meta name="description" content="Jean-Pierre Policy Group delivers policy consulting services for government agencies, municipalities, and public sector leaders in Massachusetts and beyond.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #08152a;
+  --navy2: #0d1f3c;
+  --blue: #1a3a6b;
+  --gold: #b8963e;
+  --gold-light: #d4af62;
+  --gold-pale: rgba(184,150,62,0.12);
+  --white: #ffffff;
+  --cream: #f8f5ef;
+  --muted: #7a90aa;
+  --text: #c8d8e8;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 64px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s ease;}
+nav.scrolled{background:rgba(8,21,42,0.97);backdrop-filter:blur(20px);padding:14px 64px;border-bottom:1px solid rgba(184,150,62,0.15);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--white);letter-spacing:0.5px;text-decoration:none;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:40px;list-style:none;margin-left:auto;margin-right:48px;}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--navy);padding:10px 28px;font-size:0.78rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;text-decoration:none;transition:all 0.25s;}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
+
+/* HERO */
+#hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 64px 80px;overflow:hidden;}
+.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1600&q=50&fit=crop') center/cover no-repeat;}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,21,42,1) 0%,rgba(8,21,42,0.75) 40%,rgba(8,21,42,0.3) 100%),linear-gradient(to right,rgba(8,21,42,0.6) 0%,transparent 60%);}
+.hero-line{position:absolute;left:64px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent 0%,var(--gold) 30%,var(--gold) 70%,transparent 100%);opacity:0.5;}
+.hero-content{position:relative;z-index:2;max-width:850px;padding-left:36px;}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(184,150,62,0.15);border:1px solid rgba(184,150,62,0.3);padding:8px 18px;font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:32px;animation:fadeSlideUp 0.8s ease 0.2s both;}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);}}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,7vw,6.5rem);font-weight:700;line-height:0.95;letter-spacing:-2px;margin-bottom:28px;animation:fadeSlideUp 0.8s ease 0.4s both;}
+h1 .gold{color:var(--gold);font-style:italic;}
+h1 .line2{display:block;padding-left:80px;}
+h1 .line3{display:block;padding-left:160px;}
+.hero-sub{font-size:1.1rem;color:var(--text);font-weight:300;line-height:1.75;max-width:540px;margin-bottom:44px;animation:fadeSlideUp 0.8s ease 0.6s both;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;animation:fadeSlideUp 0.8s ease 0.8s both;}
+.btn-gold{background:var(--gold);color:var(--navy);padding:16px 40px;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;text-decoration:none;transition:all 0.25s;display:inline-block;position:relative;overflow:hidden;}
+.btn-gold::after{content:'';position:absolute;inset:0;background:var(--gold-light);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;}
+.btn-gold:hover::after{transform:scaleX(1);}
+.btn-gold span{position:relative;z-index:1;}
+.btn-ghost{background:transparent;color:var(--white);padding:16px 40px;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,0.3);transition:all 0.25s;display:inline-block;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{position:absolute;right:64px;bottom:80px;z-index:2;display:flex;flex-direction:column;gap:32px;animation:fadeSlideLeft 0.8s ease 1s both;}
+@keyframes fadeSlideLeft{from{opacity:0;transform:translateX(30px);}to{opacity:1;transform:translateX(0);}}
+.stat{text-align:right;padding-right:20px;border-right:2px solid var(--gold);}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:700;color:var(--gold);line-height:1;}
+.stat-l{font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:500;margin-top:4px;}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeSlideUp 1s ease 1.2s both;}
+.scroll-hint span{font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+.scroll-arrow{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 1.5s ease infinite;}
+@keyframes scrollPulse{0%,100%{opacity:1;}50%{opacity:0.2;}}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* TICKER */
+.ticker{background:var(--gold);padding:14px 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-flex;animation:ticker 30s linear infinite;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.ticker-item{padding:0 40px;font-size:0.75rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--navy);display:inline-flex;align-items:center;gap:16px;}
+.ticker-item::after{content:'◆';font-size:0.5rem;opacity:0.5;}
+
+/* SHARED */
+section{position:relative;overflow:hidden;}
+.section-inner{position:relative;z-index:2;}
+.label{font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:14px;}
+.label::before{content:'';width:28px;height:1px;background:var(--gold);flex-shrink:0;}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:700;line-height:1.1;letter-spacing:-0.5px;}
+
+/* SERVICES */
+#services{padding:120px 64px;background:#060e1c;}
+#services::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1568992688065-536aad8a12f6?w=1600&q=60&fit=crop') center/cover no-repeat;opacity:0.04;}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:72px;}
+.services-header-right{max-width:340px;font-size:0.95rem;color:var(--muted);line-height:1.7;font-weight:300;text-align:right;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.svc{position:relative;overflow:hidden;padding:48px 36px;background:rgba(26,58,107,0.25);border:1px solid rgba(255,255,255,0.05);transition:all 0.4s ease;cursor:default;}
+.svc-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 0.4s ease;}
+.svc:hover .svc-bg{opacity:0.12;}
+.svc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;}
+.svc:hover::after{transform:scaleX(1);}
+.svc:hover{background:rgba(26,58,107,0.5);transform:translateY(-6px);}
+.svc-icon{font-size:2.2rem;margin-bottom:20px;display:block;line-height:1;}
+.svc-num{position:absolute;top:24px;right:24px;font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:700;color:rgba(184,150,62,0.08);line-height:1;}
+.svc-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:14px;line-height:1.2;position:relative;}
+.svc-desc{font-size:0.88rem;color:var(--muted);line-height:1.75;font-weight:300;position:relative;}
+
+/* ABOUT */
+#about{padding:0;background:var(--navy2);}
+.about-hero{position:relative;height:280px;overflow:hidden;}
+.about-hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1614853316476-de00d14cb1fc?w=1600&q=70&fit=crop') center 30%/cover no-repeat;}
+.about-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,21,42,0.2) 0%,rgba(13,31,60,1) 100%);}
+.about-hero-text{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:48px 64px;}
+.about-body{padding:80px 64px 120px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.about-left p{font-size:1rem;color:var(--text);line-height:1.9;font-weight:300;margin-bottom:20px;}
+.about-left p strong{color:var(--white);font-weight:500;}
+.about-left blockquote{margin-top:40px;padding:32px 32px 32px 28px;border-left:3px solid var(--gold);background:var(--gold-pale);font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;line-height:1.6;color:var(--cream);}
+.about-left blockquote cite{display:block;margin-top:16px;font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-style:normal;font-family:'DM Sans',sans-serif;font-weight:700;}
+.creds{display:flex;flex-direction:column;gap:0;}
+.cred{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:all 0.3s;}
+.cred:first-child{border-top:1px solid rgba(255,255,255,0.06);}
+.cred:hover{padding-left:8px;}
+.cred-emoji{font-size:1.6rem;flex-shrink:0;width:48px;height:48px;background:var(--gold-pale);border:1px solid rgba(184,150,62,0.2);display:flex;align-items:center;justify-content:center;}
+.cred-info{flex:1;}
+.cred-title{font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:4px;}
+.cred-sub{font-size:0.82rem;color:var(--muted);line-height:1.5;font-weight:300;}
+.cred-tag{font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:6px;display:inline-block;}
+
+/* FOCUS */
+#focus{padding:120px 64px;background:#050d1a;}
+#focus::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?w=1800&q=80&fit=crop') center/cover no-repeat;opacity:0.06;}
+.focus-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:72px;}
+.focus-header-right{font-size:0.95rem;color:var(--muted);line-height:1.7;font-weight:300;}
+.focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.focus-card{position:relative;overflow:hidden;padding:40px 32px;border:1px solid rgba(255,255,255,0.06);background:rgba(13,31,60,0.5);transition:all 0.35s ease;}
+.focus-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;}
+.focus-card:hover::before{transform:scaleX(1);}
+.focus-card:hover{background:rgba(26,58,107,0.4);transform:translateY(-4px);border-color:rgba(184,150,62,0.2);}
+.focus-icon{font-size:2rem;margin-bottom:18px;display:block;}
+.focus-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;margin-bottom:12px;color:var(--white);}
+.focus-desc{font-size:0.84rem;color:var(--muted);line-height:1.7;font-weight:300;}
+
+/* PUBLICATIONS */
+#publications{padding:80px 64px;background:var(--navy2);border-top:1px solid rgba(184,150,62,0.1);border-bottom:1px solid rgba(184,150,62,0.1);}
+.pub-inner{display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:center;}
+.pub-left p{font-size:0.95rem;color:var(--muted);line-height:1.7;font-weight:300;margin-top:16px;}
+.pub-items{display:flex;flex-direction:column;gap:0;}
+.pub-item{display:flex;align-items:center;gap:24px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.05);transition:all 0.3s;}
+.pub-item:first-child{border-top:1px solid rgba(255,255,255,0.05);}
+.pub-item:hover{padding-left:12px;}
+.pub-dot{width:8px;height:8px;flex-shrink:0;background:var(--gold);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);}
+.pub-text{font-size:0.88rem;color:var(--text);line-height:1.5;font-weight:300;flex:1;}
+.pub-tag{font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:700;flex-shrink:0;}
+
+/* CONTACT */
+#contact{padding:0;position:relative;}
+.contact-bg{position:relative;height:320px;overflow:hidden;}
+.contact-bg-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1600&q=60&fit=crop') center/cover no-repeat;}
+.contact-bg-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,13,26,0.3),rgba(5,13,26,1));}
+.contact-bg-text{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:48px 64px;text-align:center;}
+.contact-body{background:#050d1a;padding:72px 64px 100px;}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:64px;}
+.contact-card{padding:40px 32px;background:rgba(13,31,60,0.6);text-align:center;border:1px solid rgba(255,255,255,0.05);transition:all 0.3s;}
+.contact-card:hover{border-color:rgba(184,150,62,0.3);background:rgba(26,58,107,0.3);}
+.contact-card-icon{font-size:2rem;margin-bottom:16px;display:block;}
+.contact-card-label{font-size:0.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px;}
+.contact-card-value{font-size:1rem;color:var(--white);font-weight:300;line-height:1.4;}
+.contact-cta{text-align:center;}
+.contact-cta p{font-size:0.9rem;color:var(--muted);margin-bottom:32px;font-weight:300;line-height:1.7;}
+
+/* FOOTER */
+footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(184,150,62,0.12);}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--muted);}
+.footer-logo span{color:var(--gold);}
+.footer-links{display:flex;gap:32px;list-style:none;}
+.footer-links a{font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;color:#3a4d61;text-decoration:none;font-weight:500;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:0.75rem;color:#2a3a4a;font-weight:300;}
+
+/* REVEAL */
+.reveal{opacity:1;transform:none;}
+.reveal.up{opacity:1;transform:none;}
+.reveal-delay-1,.reveal-delay-2,.reveal-delay-3,.reveal-delay-4{opacity:1;}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:18px 24px;}nav.scrolled{padding:14px 24px;}
+  .nav-links,.nav-cta{display:none;}
+  #hero{padding:0 24px 80px;}
+  .hero-line{left:24px;}
+  .hero-content{padding-left:20px;}
+  h1 .line2{padding-left:20px;}h1 .line3{padding-left:40px;}
+  .hero-stats{display:none;}
+  #services,#focus,#publications,.contact-body{padding:80px 24px;}
+  .about-hero-text{padding:32px 24px;}
+  .about-body{grid-template-columns:1fr;padding:48px 24px 80px;}
+  .contact-bg-text{padding:32px 24px;}
+  footer{flex-direction:column;gap:20px;text-align:center;padding:32px 24px;}
+  .footer-links{display:none;}
+  .services-grid,.focus-grid,.contact-grid{grid-template-columns:1fr;}
+  .services-header{flex-direction:column;}
+  .focus-header{grid-template-columns:1fr;}
+  .pub-inner{grid-template-columns:1fr;gap:32px;}
+}
+
+/* ── HAMBURGER (phone only) ───────────────────────────────────── */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:6px;background:none;border:none;cursor:pointer;padding:8px;z-index:300;flex-shrink:0;}
+.hamburger span{display:block;width:26px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s ease;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(8,21,42,0.98);backdrop-filter:blur(16px);z-index:250;flex-direction:column;justify-content:center;align-items:center;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:1.25rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;padding:22px 60px;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,0.07);transition:color 0.2s,background 0.2s;}
+.mobile-menu a:first-child{border-top:1px solid rgba(255,255,255,0.07);}
+.mobile-menu a:hover{color:var(--gold);background:rgba(184,150,62,0.06);}
+.mobile-menu .mobile-cta{margin-top:36px;background:var(--gold);color:var(--navy) !important;font-weight:700;border:none;border-top:none;}
+.svc{cursor:pointer;}
+.svc-learn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;position:relative;z-index:1;}
+.svc-learn::after{content:'\2192';display:inline-block;transition:transform 0.2s;}
+.svc:hover .svc-learn::after{transform:translateX(5px);}
+.focus-card{cursor:pointer;}
+.focus-learn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.focus-learn::after{content:'\2192';display:inline-block;transition:transform 0.2s;}
+.focus-card:hover .focus-learn::after{transform:translateX(5px);}
+.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(4,9,20,0.93);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{background:var(--navy2);border:1px solid rgba(184,150,62,0.25);max-width:700px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(20px);transition:transform 0.35s ease;}
+.modal-overlay.open .modal-box{transform:translateY(0);}
+.modal-top{background:var(--navy);padding:44px 52px 36px;border-bottom:1px solid rgba(184,150,62,0.15);position:relative;}
+.modal-icon{font-size:2.6rem;margin-bottom:18px;display:block;line-height:1;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.1;}
+.modal-tag{font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.modal-close{position:absolute;top:22px;right:26px;background:none;border:none;color:var(--muted);font-size:1.6rem;cursor:pointer;line-height:1;transition:color 0.2s;padding:4px 8px;}
+.modal-close:hover{color:var(--gold);}
+.modal-body{padding:44px 52px 52px;}
+.modal-section{margin-bottom:32px;}
+.modal-section-label{font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.modal-section-label::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0;}
+.modal-section p{font-size:0.93rem;color:var(--text);line-height:1.9;font-weight:300;}
+.modal-steps{list-style:none;margin-top:12px;}
+.modal-steps li{display:flex;gap:18px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.89rem;color:var(--text);line-height:1.65;font-weight:300;}
+.modal-steps li:last-child{border-bottom:none;}
+.modal-step-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;min-width:24px;}
+.modal-cta-link{display:inline-block;background:var(--gold);color:var(--navy);padding:15px 40px;font-size:0.79rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;text-decoration:none;margin-top:12px;transition:background 0.25s;}
+.modal-cta-link:hover{background:var(--gold-light);}
+.modal-box::-webkit-scrollbar{width:3px;}
+.modal-box::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+@media(max-width:600px){
+  nav{padding:18px 20px;}nav.scrolled{padding:12px 20px;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  #hero{padding:0 20px 80px;}
+  .hero-line{left:20px;}
+  .hero-content{padding-left:16px;}
+  h1 .line2{padding-left:16px;}h1 .line3{padding-left:32px;}
+  .hero-stats{display:none;}
+  #services,#focus,#publications,.contact-body{padding:64px 20px;}
+  .about-hero-text{padding:32px 20px;}
+  .about-body{grid-template-columns:1fr;padding:40px 20px 64px;}
+  .contact-bg-text{padding:32px 20px;}
+  footer{flex-direction:column;gap:20px;text-align:center;padding:32px 20px;}
+  .footer-links{display:none;}
+  .services-grid,.focus-grid,.contact-grid{grid-template-columns:1fr;}
+  .services-header{flex-direction:column;}
+  .focus-header{grid-template-columns:1fr;}
+  .pub-inner{grid-template-columns:1fr;gap:32px;}
+  .modal-top{padding:32px 24px 28px;}
+  .modal-body{padding:32px 24px 40px;}
+}
+
+.pub-category{font-size:0.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:32px;margin-bottom:4px;padding-bottom:8px;border-bottom:1px solid rgba(184,150,62,0.2);display:flex;align-items:center;gap:12px;}
+.pub-category::before{content:'';width:16px;height:1px;background:var(--gold);flex-shrink:0;}
+.pub-category:first-child{margin-top:0;}
+.pub-item a{color:inherit;text-decoration:none;}
+.pub-item a:hover{color:var(--gold-light);}
+.pub-arrow{font-size:0.75rem;color:var(--gold);flex-shrink:0;opacity:0;transition:opacity 0.2s,transform 0.2s;margin-left:4px;}
+.pub-item:hover .pub-arrow{opacity:1;transform:translateX(3px);}
+</style>
+<script>
+var JPPG_MODALS = {
+  svc1:{icon:'📋',tag:'Service 01',title:'Policy Research & Analysis',
+    what:'We track legislation, analyze bills, review regulations, and produce issue briefs that give your team a clear picture of what is happening, what it means, and what to do next. We cover federal, state, and local policy, and we write everything in plain language your team can actually use.',
+    why:'Most organizations do not have the capacity to monitor policy developments in real time. When you miss a bill, a regulation change, or an emerging issue, you are always reacting instead of leading. Our research keeps you ahead of the curve so you can make decisions with confidence.',
+    process:['Scope the policy landscape with you and identify your priorities','Monitor legislation and regulatory developments on an ongoing basis','Analyze implications specific to your organization or community','Deliver clear, concise briefs, memos, or reports on your timeline','Available for one-time projects or ongoing retainer support']},
+  svc2:{icon:'✍️',tag:'Service 02',title:'Grant Writing & Management',
+    what:'We write competitive grant applications and manage the full compliance cycle from start to finish. We work with federal, state, and private funders, and we bring direct experience overseeing a $15M+ international development portfolio to every engagement.',
+    why:'A strong program with a weak application does not get funded. And winning a grant is only the beginning. Compliance, reporting, and documentation require sustained attention. We handle both sides so your team can focus on the work.',
+    process:['Identify funding opportunities aligned with your mission and eligibility','Develop the narrative, budget, and all supporting materials','Review and refine drafts with your team before submission','Manage compliance, reporting, and funder communication post-award','Build internal capacity so your team is stronger for the next cycle']},
+  svc3:{icon:'📊',tag:'Service 03',title:'Program Evaluation',
+    what:'We assess whether your programs are working, identify what is and is not effective, and deliver findings you can act on. Our evaluations are evidence-based, independent, and written in plain language, not buried in academic jargon.',
+    why:'Funders require it. Leadership needs it. Communities deserve to know whether programs designed to serve them are actually doing so. A good evaluation does not just measure outcomes, it tells you what to fix and how.',
+    process:['Define evaluation questions with your team and stakeholders','Design the methodology: surveys, interviews, data review, site visits','Collect and analyze qualitative and quantitative data','Identify gaps, strengths, and specific recommendations','Deliver a final report written for your audience, not an academic journal']},
+  svc4:{icon:'🗺️',tag:'Service 04',title:'Strategic Planning',
+    what:'We help agencies and organizations build long-range plans that are realistic, aligned with stakeholder priorities, and designed to actually be implemented. We have redesigned legislative and operational systems that cut turnaround time by 40% for past clients.',
+    why:'Most strategic plans sit on a shelf. That happens when the planning process does not involve the right people or connect to budget realities. We build plans that stick because we build them with the people who have to carry them out.',
+    process:['Conduct an organizational assessment and environmental scan','Facilitate stakeholder sessions to surface priorities and concerns','Develop strategic goals, objectives, and action steps','Align the plan with available resources and realistic timelines','Build in accountability structures and clear progress checkpoints']},
+  svc5:{icon:'🤝',tag:'Service 05',title:'Community Engagement',
+    what:'We design and facilitate participation processes that reach the people most affected by policy decisions, not just the usual voices in the room. We have organized 30+ stakeholder meetings across government agencies, utilities, nonprofits, and advocacy organizations.',
+    why:'Decisions made without community input tend to fail at implementation or lose public trust. Genuine engagement is not just good practice, it is increasingly required by funders, regulators, and the communities themselves.',
+    process:['Map your stakeholder landscape and identify underrepresented groups','Design an engagement strategy appropriate to the decision and timeline','Facilitate meetings, focus groups, or public comment processes','Synthesize community input into clear findings for decision-makers','Document the process to satisfy funder and regulatory requirements']},
+  svc6:{icon:'⚖️',tag:'Service 06',title:'Equity & DEIA Consulting',
+    what:'We help organizations build equity into how they operate, not just what they say. Our approach is grounded in direct experience developing institutional equity and accessibility materials inside the White House Office of Administration, work that was adopted by multiple federal agencies.',
+    why:'An equity statement is not an equity strategy. Organizations that want to close gaps in outcomes, access, and representation need structured plans, internal buy-in, and accountability. We help you get from commitment to practice.',
+    process:['Conduct an equity assessment of policies, practices, and outcomes','Identify gaps between stated values and operational reality','Develop a DEIA strategic plan with specific, measurable goals','Support implementation through staff training and process redesign','Build reporting frameworks so progress is tracked and communicated']},
+  foc1:{icon:'🏙️',tag:'Area of Expertise',title:'Municipal Governance',
+    what:'We provide practical, hands-on policy support for cities and towns across Massachusetts, from ongoing legislative monitoring to strategic planning and council-level analysis. We have directed research on 50+ active bills spanning infrastructure, housing, and social services.',
+    why:'Municipal staff are often stretched thin, covering multiple portfolios with limited research capacity. A trusted outside partner who understands local government and can turn around clear, actionable analysis quickly makes a real difference in the quality of decisions being made.',
+    process:['Monitor state and federal legislation for local government impacts','Provide bill summaries, fiscal notes, and policy recommendations for council','Support the development of local ordinances and resolutions','Facilitate strategic planning processes for departments and leadership','Engage residents and stakeholders on priority policy issues']},
+  foc2:{icon:'🛂',tag:'Area of Expertise',title:'Migration & Refugee Policy',
+    what:'We bring deep expertise in refugee resettlement, immigration policy, and newcomer integration across state agencies and advocacy networks. Our principal has worked directly with Haiti diaspora coalitions, federal advocacy organizations, and migration-focused legislative offices.',
+    why:'Migration policy sits at the intersection of federal law, state administration, and local service delivery, and the landscape changes fast. Organizations in this space need a partner who understands the full policy environment and can translate it into practical guidance.',
+    process:['Track federal and state legislative developments on migration and resettlement','Analyze policy implications for local agencies, nonprofits, and communities','Produce issue briefs and policy memos for advocacy or administrative use','Support community engagement processes with newcomer populations','Advise on grant opportunities aligned with resettlement and integration work']},
+  foc3:{icon:'⚡',tag:'Area of Expertise',title:'Clean Energy & Climate',
+    what:'We provide legislative tracking and policy support for clean energy transition and climate resilience work in Massachusetts. Our principal organized 30+ stakeholder meetings with legislators, utilities, clean energy startups, and environmental justice organizations at the Northeast Clean Energy Council.',
+    why:'Clean energy policy moves quickly and touches multiple sectors simultaneously. Organizations in this space need someone who can track legislation, understand the stakeholder landscape, and communicate policy implications clearly to both technical and non-technical audiences.',
+    process:['Track state and federal clean energy and climate legislation','Analyze environmental justice implications of energy policy proposals','Facilitate stakeholder engagement across utilities, advocates, and government','Produce policy briefs and testimony for legislative and regulatory proceedings','Support grant applications for clean energy and resilience initiatives']},
+  foc4:{icon:'🌍',tag:'Area of Expertise',title:'International Development',
+    what:'We bring direct experience managing governance, anti-corruption, and program evaluation work for Haiti and Caribbean development initiatives, including co-managing a $15M+ portfolio at the UN Foundation and a $3M+ USAID-funded program at Dexis Consulting.',
+    why:'International development work requires navigating complex stakeholder environments, donor requirements, and host government relationships simultaneously. Our principal has done this work on the ground and understands both the policy and operational dimensions.',
+    process:['Conduct policy and context analysis for program design and adaptation','Support program evaluation and monitoring frameworks','Produce donor reports, policy briefs, and stakeholder communications','Advise on governance and anti-corruption program strategies','Support proposals for USAID, State Department, and multilateral funders']},
+  foc5:{icon:'💼',tag:'Area of Expertise',title:'Economic & Workforce Development',
+    what:'We provide research and strategy support for workforce equity, job creation, and economic opportunity programs serving underserved communities. Every analysis we produce integrates an equity lens, examining who benefits, who is left out, and what systemic barriers need to be addressed.',
+    why:'Workforce and economic development programs often have strong intentions but weak connections to the people they are meant to serve. Policy analysis that centers equity helps organizations design programs that actually close gaps instead of reinforcing them.',
+    process:['Analyze labor market conditions and workforce policy trends','Assess program design for equity gaps and implementation barriers','Produce research reports and policy recommendations for funders and leadership','Support community engagement with workers and residents','Advise on grant opportunities in workforce and economic development']},
+  foc6:{icon:'🏘️',tag:'Area of Expertise',title:'Housing & Land Use',
+    what:"We provide policy analysis and planning support for affordable housing, zoning reform, and equitable community development. Our principal led a housing policy study in direct collaboration with the City of Boston Mayor's Office on voting rights and housing access for non-citizens.",
+    why:'Housing is one of the most politically complex and consequential policy areas in Massachusetts. Communities need analysis that is legally grounded, community-informed, and clear enough to inform real decisions, not just position papers.',
+    process:['Analyze zoning codes and land use policies for equity and affordability impacts','Track state and local housing legislation and regulatory changes','Support community engagement processes on housing and development decisions','Produce policy briefs and recommendations for municipal leadership','Advise on affordable housing program design and grant strategy']}
+};
+
+function openModal(id) {
+  var d = JPPG_MODALS[id];
+  if (!d) return;
+  var overlay = document.getElementById('modalOverlay');
+  if (!overlay) return;
+  document.getElementById('modalIcon').textContent = d.icon;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalTag').textContent = d.tag;
+  var steps = d.process.map(function(s,i){
+    return '<li><span class="modal-step-num">'+(i+1)+'</span><span>'+s+'</span></li>';
+  }).join('');
+  document.getElementById('modalBody').innerHTML =
+    '<div class="modal-section"><div class="modal-section-label">What We Do</div><p>'+d.what+'</p></div>'+
+    '<div class="modal-section"><div class="modal-section-label">Why It Matters</div><p>'+d.why+'</p></div>'+
+    '<div class="modal-section"><div class="modal-section-label">How We Work</div><ol class="modal-steps">'+steps+'</ol></div>'+
+    '<a href="#contact" class="modal-cta-link" onclick="closeModal()">Work With Us</a>';
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  var overlay = document.getElementById('modalOverlay');
+  if (overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+}
+
+function submitContactForm() {
+  var name    = (document.getElementById('cf-name').value || '').trim();
+  var email   = (document.getElementById('cf-email').value || '').trim();
+  var org     = (document.getElementById('cf-org').value || '').trim();
+  var message = (document.getElementById('cf-message').value || '').trim();
+  var status  = document.getElementById('cf-status');
+  if (!name || !email || !message) {
+    status.style.display = 'block';
+    status.style.color = '#e07070';
+    status.textContent = 'Please fill in your name, email, and message before sending.';
+    return;
+  }
+  var subject = encodeURIComponent('New Inquiry from ' + name + (org ? ' — ' + org : ''));
+  var body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    (org ? 'Organization: ' + org + '\n' : '') +
+    '\nMessage:\n' + message
+  );
+  window.location.href = 'mailto:ervens@jppolicygroup.com?subject=' + subject + '&body=' + body;
+  status.style.display = 'block';
+  status.style.color = '#b8963e';
+  status.textContent = 'Opening your email client — thank you for reaching out!';
+}
+</script>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-logo" href="#">JP<span>.</span>Policy Group</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#focus">Expertise</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Work With Us</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#focus" class="mobile-link">Expertise</a>
+  <a href="#publications" class="mobile-link">Publications</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="mobile-link mobile-cta">Work With Us</a>
+</div>
+
+<!-- HERO — Boston skyline -->
+<section id="hero">
+  <div class="hero-img"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Quincy, Massachusetts &middot; Est. 2026</div>
+    <h1>Jean-Pierre<br><span class="line2"><span class="gold">Policy</span></span><span class="line3">Group</span></h1>
+    <p class="hero-sub">Translating complex policy into clear, decisive action &mdash; for municipalities, state and federal government agencies, and public sector leaders across Massachusetts and beyond.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-gold"><span>Our Services</span></a>
+      <a href="#contact" class="btn-ghost">Work With Us</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">$18M+</div><div class="stat-l">Programs Managed</div></div>
+    <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Bills Tracked</div></div>
+    <div class="stat"><div class="stat-n">3</div><div class="stat-l">Government Levels</div></div>
+    <div class="stat"><div class="stat-n">351</div><div class="stat-l">MA Municipalities</div></div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-arrow"></div></div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item">Policy Research &amp; Analysis</span>
+    <span class="ticker-item">Grant Writing &amp; Management</span>
+    <span class="ticker-item">Legislative Tracking</span>
+    <span class="ticker-item">Program Evaluation</span>
+    <span class="ticker-item">DEIA Consulting</span>
+    <span class="ticker-item">Community Engagement</span>
+    <span class="ticker-item">Strategic Planning</span>
+    <span class="ticker-item">International Development</span>
+    <span class="ticker-item">Policy Research &amp; Analysis</span>
+    <span class="ticker-item">Grant Writing &amp; Management</span>
+    <span class="ticker-item">Legislative Tracking</span>
+    <span class="ticker-item">Program Evaluation</span>
+    <span class="ticker-item">DEIA Consulting</span>
+    <span class="ticker-item">Community Engagement</span>
+    <span class="ticker-item">Strategic Planning</span>
+    <span class="ticker-item">International Development</span>
+  </div>
+</div>
+
+<!-- WHAT WE DO -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-header reveal">
+      <div>
+        <div class="label">What We Do</div>
+        <h2>Expert Services for<br>the Public Sector</h2>
+      </div>
+      <div class="services-header-right">From city halls to federal agencies, we deliver the policy expertise that drives better decisions and stronger communities.</div>
+    </div>
+    <div class="services-grid">
+      <div class="svc reveal reveal-delay-1" onclick="openModal('svc1')">
+        <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=50&fit=crop')"></div>
+        <div class="svc-num">01</div>
+        <span class="svc-icon">📋</span>
+        <div class="svc-title" data-modal="svc1">Policy Research &amp; Analysis</div>
+        <p class="svc-desc">Rigorous legislative analysis, bill tracking, and policy evaluation for state agencies and municipal governments. Turning complex policy into clear, actionable intelligence &mdash; with a 95% on-time delivery rate.</p>
+        <span class="svc-learn">Learn More</span>
+      </div>
+      <div class="svc reveal reveal-delay-2" onclick="openModal('svc2')">
+        <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=50&fit=crop')"></div>
+        <div class="svc-num">02</div>
+        <span class="svc-icon">✍️</span>
+        <div class="svc-title" data-modal="svc2">Grant Writing &amp; Management</div>
+        <p class="svc-desc">End-to-end grant support from application drafting to compliance reporting. Backed by direct experience co-managing a $15M+ international development portfolio across government and multilateral partners.</p>
+        <span class="svc-learn">Learn More</span>
+      </div>
+      <div class="svc reveal reveal-delay-3" onclick="openModal('svc3')">
+        <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=50&fit=crop')"></div>
+        <div class="svc-num">03</div>
+        <span class="svc-icon">📊</span>
+        <div class="svc-title" data-modal="svc3">Program Evaluation</div>
+        <p class="svc-desc">Independent, evidence-based assessment of government programs &mdash; measuring outcomes against goals and delivering clear recommendations that inform funding decisions and policy direction.</p>
+        <span class="svc-learn">Learn More</span>
+      </div>
+      <div class="svc reveal reveal-delay-1" onclick="openModal('svc4')">
+        <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=50&fit=crop')"></div>
+        <div class="svc-num">04</div>
+        <span class="svc-icon">🗺️</span>
+        <div class="svc-title" data-modal="svc4">Strategic Planning</div>
+        <p class="svc-desc">Long-range strategic roadmaps for agencies and municipalities, built with stakeholder alignment from day one. We redesigned legislative systems that cut turnaround time by 40% and created real-time coordination capacity.</p>
+        <span class="svc-learn">Learn More</span>
+      </div>
+      <div class="svc reveal reveal-delay-2" onclick="openModal('svc5')">
+        <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=50&fit=crop')"></div>
+        <div class="svc-num">05</div>
+        <span class="svc-icon">🤝</span>
+        <div class="svc-title" data-modal="svc5">Community Engagement</div>
+        <p class="svc-desc">Designing inclusive public participation processes connecting underrepresented voices to the decisions that shape their lives. We've organized 30+ stakeholder meetings across legislators, utilities, and advocacy groups.</p>
+        <span class="svc-learn">Learn More</span>
+      </div>
+      <div class="svc reveal reveal-delay-3" onclick="openModal('svc6')">
+        <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=50&fit=crop')"></div>
+        <div class="svc-num">06</div>
+        <span class="svc-icon">⚖️</span>
+        <div class="svc-title" data-modal="svc6">Equity &amp; DEIA Consulting</div>
+        <p class="svc-desc">Equity assessments and DEIA strategic plans grounded in real federal experience &mdash; including work within the White House Office of Administration, where we developed the office's first institutional equity materials.</p>
+        <span class="svc-learn">Learn More</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-hero">
+    <div class="about-hero-img"></div>
+    <div class="about-hero-text reveal">
+      <div class="label">About</div>
+      <h2>Government Expertise.<br><em style="color:var(--gold)">Real Results.</em></h2>
+    </div>
+  </div>
+  <div class="about-body">
+    <div class="about-left reveal">
+      <p><strong>Jean-Pierre Policy Group</strong> is a policy consulting firm based in Quincy, Massachusetts. It is led by <strong>Ervens Jean-Pierre</strong>, a senior policy analyst with experience working at the city, state, federal, and international levels of government.</p>
+      <p>Ervens has worked inside government, not just around it. He has supported Council members on 50+ active bills, written materials used in congressional briefings, managed federal governance programs overseas, and built equity frameworks within the White House. That combination of experience is rare, and it shows in the work.</p>
+      <p>We help agencies, municipalities, and organizations understand what policy means for them, what their options are, and how to act on it clearly and confidently.</p>
+      <blockquote>
+        &ldquo;The best policy work bridges the gap between research and real-world impact &mdash; informing decisions that improve lives in communities.&rdquo;
+        <cite>&mdash; Ervens Jean-Pierre, Principal</cite>
+      </blockquote>
+    </div>
+    <div class="about-right reveal reveal-delay-2">
+      <div class="label" style="margin-bottom:24px;">Credentials &amp; Experience</div>
+      <div class="creds">
+        <div class="cred">
+          <div class="cred-emoji">🏛️</div>
+          <div class="cred-info">
+            <div class="cred-title">White House &mdash; Office of Administration (DEIA)</div>
+            <div class="cred-sub">Developed the office's first institutional equity and accessibility materials. Coordinated compliance for high-profile White House events with 95% ASL service fulfillment. Research adopted by multiple federal agencies.</div>
+            <span class="cred-tag">Federal Executive Branch</span>
+          </div>
+        </div>
+        <div class="cred">
+          <div class="cred-emoji">🌐</div>
+          <div class="cred-info">
+            <div class="cred-title">UN Foundation &amp; Dexis Consulting (USAID Programs)</div>
+            <div class="cred-sub">Co-managed $15M+ international development portfolio at UN Foundation across Haitian ministries, Global Affairs Canada, and UN agencies. Managed $3M+ USAID-funded governance programs at Dexis.</div>
+            <span class="cred-tag">International Development</span>
+          </div>
+        </div>
+        <div class="cred">
+          <div class="cred-emoji">📜</div>
+          <div class="cred-info">
+            <div class="cred-title">Massachusetts State Senate &mdash; Sen. Liz Miranda</div>
+            <div class="cred-sub">Legislative fellow tracking state policy across public safety, education, workforce development, and equity. Authored legislative digests, issue briefs, and draft testimony for committee strategy.</div>
+            <span class="cred-tag">State Legislature</span>
+          </div>
+        </div>
+        <div class="cred">
+          <div class="cred-emoji">⚡</div>
+          <div class="cred-info">
+            <div class="cred-title">Northeast Clean Energy Council</div>
+            <div class="cred-sub">Policy research and legislative tracking on clean energy and environmental justice. Organized 30+ meetings with legislators, utilities, startups, and environmental justice organizations.</div>
+            <span class="cred-tag">Energy &amp; Climate Policy</span>
+          </div>
+        </div>
+        <div class="cred">
+          <div class="cred-emoji">🎓</div>
+          <div class="cred-info">
+            <div class="cred-title">MPA &mdash; Northeastern University</div>
+            <div class="cred-sub">Master of Public Administration with concentration in Public Policy Analysis. Certificate in Security and Resilience Studies. Evidence-based policymaking and institutional governance.</div>
+            <span class="cred-tag">Graduate Education</span>
+          </div>
+        </div>
+        <div class="cred">
+          <div class="cred-emoji">🌍</div>
+          <div class="cred-info">
+            <div class="cred-title">BA in International Studies &mdash; Washington College</div>
+            <div class="cred-sub">Minors in Peace &amp; Conflict Studies, Economics, and Latin American Politics. Study abroad at PUC-Rio, Brazil. Directly informs migration, governance, and international development expertise.</div>
+            <span class="cred-tag">Undergraduate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE WE SPECIALIZE -->
+<section id="focus">
+  <div class="section-inner">
+    <div class="focus-header reveal">
+      <div>
+        <div class="label">Where We Specialize</div>
+        <h2>Policy Expertise<br>Across Sectors</h2>
+      </div>
+      <p class="focus-header-right">Deep subject-matter knowledge in the policy areas that matter most to Massachusetts government, municipalities, and international stakeholders.</p>
+    </div>
+    <div class="focus-grid">
+      <div class="focus-card reveal reveal-delay-1" onclick="openModal('foc1')">
+        <span class="focus-icon">🏙️</span>
+        <div class="focus-title" data-modal="foc1">Municipal Governance</div>
+        <p class="focus-desc">Practical policy support for cities and towns across Massachusetts &mdash; from legislative monitoring to strategic planning and council-level analysis. Experienced directing research on 50+ active bills across infrastructure, housing, and social services.</p>
+        <span class="focus-learn">Learn More</span>
+      </div>
+      <div class="focus-card reveal reveal-delay-2" onclick="openModal('foc2')">
+        <span class="focus-icon">🛂</span>
+        <div class="focus-title" data-modal="foc2">Migration &amp; Refugee Policy</div>
+        <p class="focus-desc">Deep expertise in refugee resettlement, immigration policy, and newcomer integration across state agencies. Haiti diaspora networks, federal advocacy coalitions, and direct experience with migration-focused legislative analysis.</p>
+        <span class="focus-learn">Learn More</span>
+      </div>
+      <div class="focus-card reveal reveal-delay-3" onclick="openModal('foc3')">
+        <span class="focus-icon">⚡</span>
+        <div class="focus-title" data-modal="foc3">Clean Energy &amp; Climate</div>
+        <p class="focus-desc">Legislative tracking and policy support for clean energy transition and climate resilience in Massachusetts. Direct experience with the Northeast Clean Energy Council and environmental justice advocacy coalitions.</p>
+        <span class="focus-learn">Learn More</span>
+      </div>
+      <div class="focus-card reveal reveal-delay-1" onclick="openModal('foc4')">
+        <span class="focus-icon">🌍</span>
+        <div class="focus-title" data-modal="foc4">International Development</div>
+        <p class="focus-desc">Governance, anti-corruption, and program evaluation for Haiti and Caribbean development initiatives. Built on direct management of USAID and UN programs across government, multilateral, and donor partners.</p>
+        <span class="focus-learn">Learn More</span>
+      </div>
+      <div class="focus-card reveal reveal-delay-2" onclick="openModal('foc5')">
+        <span class="focus-icon">💼</span>
+        <div class="focus-title" data-modal="foc5">Economic &amp; Workforce Development</div>
+        <p class="focus-desc">Research and strategy supporting workforce equity, job creation, and economic opportunity in underserved communities &mdash; with an equity lens embedded in every deliverable.</p>
+        <span class="focus-learn">Learn More</span>
+      </div>
+      <div class="focus-card reveal reveal-delay-3" onclick="openModal('foc6')">
+        <span class="focus-icon">🏘️</span>
+        <div class="focus-title" data-modal="foc6">Housing &amp; Land Use</div>
+        <p class="focus-desc">Policy analysis and planning for affordable housing, zoning reform, and equitable community development &mdash; including direct collaboration with the City of Boston Mayor's Office on housing access and voting rights expansion.</p>
+        <span class="focus-learn">Learn More</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="pub-inner reveal">
+      <div class="pub-left">
+        <div class="label">Publications &amp; Work</div>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.8rem);">Policy Writing<br>&amp; Selected Work</h2>
+        <p>Published analysis, legislative work, and applied research spanning governance, international development, immigration, and domestic policy &mdash; distributed to advocacy coalitions, municipal leaders, and policymakers.</p>
+      </div>
+      <div class="pub-items">
+
+        <div class="pub-category">Published Articles</div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">
+            <a href="https://www.haitipolicyhouse.org/publications/haitiffeb-en" target="_blank" rel="noopener">
+              Financial Forensics for Credible Elections in Haiti &mdash; applying accountability frameworks to electoral integrity in fragile-state governance
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">Nov 2025</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">
+            <a href="https://www.haitipolicyhouse.org/publications/haitis-fight-for-strategic-relevance" target="_blank" rel="noopener">
+              Strategic Relevance Over Sympathy: Haiti&rsquo;s Next Move in U.S. Foreign Policy &mdash; reframing bilateral engagement through a strategic interest lens
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">Apr 2025</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">
+            <a href="https://www.linkedin.com/pulse/why-institutional-reform-must-precede-constitutional-change-haiti" target="_blank" rel="noopener">
+              Why Institutional Reform Must Precede Constitutional Change in Haiti &mdash; sequencing governance reform for sustainable democratic transition
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">Jun 2025</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">
+            <a href="https://www.haitipolicyhouse.org/publications/forced-to-flee-haitis-displacement-crisis-amid-gang-wars" target="_blank" rel="noopener">
+              Addressing Haiti&rsquo;s Internal Displacement Crisis &mdash; policy analysis of forced migration, shelter gaps, and humanitarian coordination failures
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">Jun 2024</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">
+            <a href="https://www.haitipolicyhouse.org/publications/understanding-the-new-haiti-presidential-council" target="_blank" rel="noopener">
+              Negotiating Stability: The Formation of Haiti&rsquo;s Presidential Council &mdash; analysis of transitional governance structures and power-sharing arrangements
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">Apr 2024</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">
+            <a href="https://www.linkedin.com/pulse/time-immigration-reform-now-ervens-jean-pierre" target="_blank" rel="noopener">
+              The Time for Immigration Reform Is Now &mdash; policy brief on U.S. immigration enforcement trends and the case for comprehensive legislative reform
+            </a>
+            <span class="pub-arrow">&#8599;</span>
+          </div>
+          <div class="pub-tag">May 2024</div>
+        </div>
+
+        <div class="pub-category">Legislative &amp; Government Work</div>
+
+        <div class="pub-item" style="background:rgba(184,150,62,0.06);border:1px solid rgba(184,150,62,0.18);padding:20px 20px;margin-bottom:4px;align-items:flex-start;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;width:100%;">
+            <div class="pub-dot"></div>
+            <div style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;">&#9733; Featured Project</div>
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-weight:600;color:var(--white);padding-left:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Municipal Voting for Non-Citizens &mdash; City of Boston Mayor&rsquo;s Office for Immigrant Advancement (MOIA)</div>
+          <div class="pub-text" style="padding-left:22px;">Led a policy study in direct collaboration with the Mayor&rsquo;s Office assessing municipal voting rights expansion for non-citizens with legal status. Delivered recommendations through legal research, stakeholder interviews, and SWOT analysis &mdash; identifying implementation pathways and governance considerations for mayoral decision-making.</div>
+          <div class="pub-tag" style="padding-left:22px;">2024 &middot; Featured</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">Testimony writing and legislative analysis &mdash; Massachusetts State Senate, Office of Sen. Liz Miranda. Issue briefs across public safety, education, and workforce equity.</div>
+          <div class="pub-tag">2024</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">Policy and legislative analysis &mdash; Howard County Council. Legislative drafting, bill tracking, feasibility assessment, and policy research supporting council members across infrastructure and social services portfolios.</div>
+          <div class="pub-tag">2023&ndash;24</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">Survey and policy analysis &mdash; MBTA Orange Line equity, access, and affordability assessment focused on marginalized communities comprising a significant share of the ridership, with policy solutions for the Massachusetts Bay Transportation Authority.</div>
+          <div class="pub-tag">2023</div>
+        </div>
+
+        <div class="pub-category">Applied Research</div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">Program assessment &mdash; social welfare program evaluation in an impoverished community in the Philippines, measuring outcomes and implementation gaps against program goals.</div>
+          <div class="pub-tag">2017</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">Constitutional comparative analysis &mdash; Second Amendment rights framework compared across U.S. and Latin American constitutional language and legal interpretation. Conducted at the National Constitution Center.</div>
+          <div class="pub-tag">2018</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-dot"></div>
+          <div class="pub-text">The Lumen Project &mdash; institution-wide racial climate survey at Washington College. Led research design, stakeholder engagement, and final report with conference presentation.</div>
+          <div class="pub-tag">2019</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-bg">
+    <div class="contact-bg-img"></div>
+    <div class="contact-bg-text reveal">
+      <div class="label" style="justify-content:center;">Let's Work Together</div>
+      <h2>Ready to Start a Conversation?</h2>
+    </div>
+  </div>
+  <div class="contact-body">
+    <div class="contact-grid reveal">
+      <div class="contact-card">
+        <span class="contact-card-icon">📞</span>
+        <div class="contact-card-label">Phone</div>
+        <div class="contact-card-value">(443) 488-6860</div>
+      </div>
+      <div class="contact-card">
+        <span class="contact-card-icon">✉️</span>
+        <div class="contact-card-label">Email</div>
+        <div class="contact-card-value"><a href="mailto:ervens@jppolicygroup.com" style="color:inherit;text-decoration:none;">ervens@jppolicygroup.com</a></div>
+      </div>
+      <div class="contact-card">
+        <span class="contact-card-icon">📍</span>
+        <div class="contact-card-label">Location</div>
+        <div class="contact-card-value">Quincy, Massachusetts</div>
+      </div>
+    </div>
+    <div class="contact-cta reveal">
+      <p>Whether you're a state agency, municipality, nonprofit, or organization seeking expert policy support &mdash;<br>we're here to help you move from analysis to action.</p>
+      <div id="contactForm" style="max-width:600px;margin:0 auto;text-align:left;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div>
+            <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Your Name</label>
+            <input id="cf-name" type="text" placeholder="Full name" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
+          </div>
+          <div>
+            <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Your Email</label>
+            <input id="cf-email" type="email" placeholder="your@email.com" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Organization</label>
+          <input id="cf-org" type="text" placeholder="City, agency, or organization name" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
+        </div>
+        <div style="margin-bottom:24px;">
+          <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Message</label>
+          <textarea id="cf-message" rows="5" placeholder="Tell us how we can help..." style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'"></textarea>
+        </div>
+        <div style="text-align:center;">
+          <button onclick="submitContactForm()" class="btn-gold" style="border:none;cursor:pointer;font-family:'DM Sans',sans-serif;"><span>Send a Message</span></button>
+        </div>
+        <div id="cf-status" style="margin-top:16px;text-align:center;font-size:0.85rem;display:none;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="modalOverlay"><div class="modal-box"><div class="modal-top"><button class="modal-close" id="modalClose" aria-label="Close" onclick="closeModal()">&#x2715;</button><span class="modal-icon" id="modalIcon"></span><div class="modal-title" id="modalTitle"></div><div class="modal-tag" id="modalTag"></div></div><div class="modal-body" id="modalBody"></div></div></div>
+
+<footer>
+  <div class="footer-logo">Jean-Pierre<span>.</span>Policy Group</div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#focus">Expertise</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&#169; 2026 Jean-Pierre Policy Group &middot; Quincy, MA</div>
+</footer>
+
+<script>
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', function(e){ if (e.target === this) closeModal(); });
+
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', function(){
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.
