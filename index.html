@@ -353,6 +353,18 @@ function closeModal() {
   if (overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
 }
 
+function openContactForm() {
+  var overlay = document.getElementById('contactFormOverlay');
+  if (overlay) { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+
+function closeContactForm() {
+  var overlay = document.getElementById('contactFormOverlay');
+  if (overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+  var status = document.getElementById('cf-status');
+  if (status) { status.style.display = 'none'; status.textContent = ''; }
+}
+
 function submitContactForm() {
   var name    = (document.getElementById('cf-name').value || '').trim();
   var email   = (document.getElementById('cf-email').value || '').trim();
@@ -372,10 +384,12 @@ function submitContactForm() {
     (org ? 'Organization: ' + org + '\n' : '') +
     '\nMessage:\n' + message
   );
-  window.location.href = 'mailto:ervens@jppolicygroup.com?subject=' + subject + '&body=' + body;
+  var _em = 'ervens' + '@' + 'jppolicygroup' + '.' + 'com';
+  window.location.href = 'mailto:' + _em + '?subject=' + subject + '&body=' + body;
   status.style.display = 'block';
   status.style.color = '#b8963e';
   status.textContent = 'Opening your email client — thank you for reaching out!';
+  setTimeout(closeContactForm, 2200);
 }
 </script>
 </head>
@@ -654,7 +668,7 @@ function submitContactForm() {
         <div class="pub-item">
           <div class="pub-dot"></div>
           <div class="pub-text">
-            <a href="https://www.haitipolicyhouse.org/post/financial-forensics-for-credible-elections-in-haiti" target="_blank" rel="noopener">
+            <a href="https://www.haitipolicyhouse.org/publications/haitiffeb-en" target="_blank" rel="noopener">
               Financial Forensics for Credible Elections in Haiti &mdash; applying accountability frameworks to electoral integrity in fragile-state governance
             </a>
             <span class="pub-arrow">&#8599;</span>
@@ -665,7 +679,7 @@ function submitContactForm() {
         <div class="pub-item">
           <div class="pub-dot"></div>
           <div class="pub-text">
-            <a href="https://www.haitipolicyhouse.org/post/strategic-relevance-over-sympathy-haiti-s-next-move-in-u-s-foreign-policy" target="_blank" rel="noopener">
+            <a href="https://www.haitipolicyhouse.org/publications/haitis-fight-for-strategic-relevance" target="_blank" rel="noopener">
               Strategic Relevance Over Sympathy: Haiti&rsquo;s Next Move in U.S. Foreign Policy &mdash; reframing bilateral engagement through a strategic interest lens
             </a>
             <span class="pub-arrow">&#8599;</span>
@@ -687,7 +701,7 @@ function submitContactForm() {
         <div class="pub-item">
           <div class="pub-dot"></div>
           <div class="pub-text">
-            <a href="https://www.haitipolicyhouse.org/post/addressing-haiti-s-internal-displacement-crisis" target="_blank" rel="noopener">
+            <a href="https://www.haitipolicyhouse.org/publications/forced-to-flee-haitis-displacement-crisis-amid-gang-wars" target="_blank" rel="noopener">
               Addressing Haiti&rsquo;s Internal Displacement Crisis &mdash; policy analysis of forced migration, shelter gaps, and humanitarian coordination failures
             </a>
             <span class="pub-arrow">&#8599;</span>
@@ -698,7 +712,7 @@ function submitContactForm() {
         <div class="pub-item">
           <div class="pub-dot"></div>
           <div class="pub-text">
-            <a href="https://www.haitipolicyhouse.org/post/negotiating-stability-the-formation-of-haiti-s-presidential-council" target="_blank" rel="noopener">
+            <a href="https://www.haitipolicyhouse.org/publications/understanding-the-new-haiti-presidential-council" target="_blank" rel="noopener">
               Negotiating Stability: The Formation of Haiti&rsquo;s Presidential Council &mdash; analysis of transitional governance structures and power-sharing arrangements
             </a>
             <span class="pub-arrow">&#8599;</span>
@@ -782,52 +796,234 @@ function submitContactForm() {
     </div>
   </div>
   <div class="contact-body">
+
+    <!-- 3 cards: Phone | Send a Message | Location -->
     <div class="contact-grid reveal">
+      <!-- Card 1: Phone -->
       <div class="contact-card">
         <span class="contact-card-icon">📞</span>
         <div class="contact-card-label">Phone</div>
         <div class="contact-card-value">(443) 488-6860</div>
       </div>
-      <div class="contact-card">
+
+      <!-- Card 2: Send a Message — opens form modal on click -->
+      <div class="contact-card" onclick="openContactForm()" style="cursor:pointer;transition:all 0.3s;">
         <span class="contact-card-icon">✉️</span>
-        <div class="contact-card-label">Email</div>
-        <div class="contact-card-value"><a href="/cdn-cgi/l/email-protection#51342327343f22113b21213e3d38322836233e24217f323e3c" style="color:inherit;text-decoration:none;"><span class="__cf_email__" data-cfemail="36534440535845765c4646595a5f554f51445943461855595b">[email&#160;protected]</span></a></div>
+        <div class="contact-card-label">Send a Message</div>
+        <div class="contact-card-value" style="font-size:0.85rem;color:var(--muted);">Click to reach out</div>
       </div>
-      <div class="contact-card">
-        <span class="contact-card-icon">📍</span>
-        <div class="contact-card-label">Location</div>
-        <div class="contact-card-value">Quincy, Massachusetts</div>
+
+      <!-- Card 3: Location with Massachusetts map + Quincy pin -->
+      <div class="contact-card" style="padding:0;overflow:hidden;position:relative;min-height:180px;">
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="100%" height="100%" style="display:block;background:#0d1f3c;">
+  <!-- Ocean/background -->
+  <rect width="400" height="260" fill="#08152a"/>
+  <!-- Grid lines subtle -->
+  <line x1="0" y1="130" x2="400" y2="130" stroke="rgba(184,150,62,0.06)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="260" stroke="rgba(184,150,62,0.06)" stroke-width="1"/>
+  <!-- Massachusetts state outline (simplified but recognizable shape) -->
+  <!-- Western border straight line, north border, Cape Cod hook, south shore -->
+  <path d="
+    M 42,48
+    L 42,52
+    L 45,55
+    L 48,60
+    L 52,62
+    L 58,63
+    L 65,63
+    L 72,62
+    L 80,61
+    L 92,60
+    L 105,59
+    L 118,58
+    L 130,57
+    L 142,56
+    L 155,55
+    L 168,54
+    L 182,53
+    L 196,52
+    L 210,52
+    L 222,51
+    L 235,51
+    L 248,51
+    L 260,51
+    L 272,51
+    L 284,51
+    L 296,52
+    L 308,53
+    L 318,54
+    L 326,55
+    L 332,57
+    L 336,60
+    L 338,65
+    L 339,70
+    L 340,78
+    L 341,86
+    L 342,94
+    L 342,102
+    L 341,110
+    L 340,116
+    L 338,122
+    L 336,126
+    L 332,130
+    L 328,133
+    L 323,135
+    L 316,136
+    L 309,136
+    L 302,135
+    L 296,134
+    L 290,134
+    L 283,135
+    L 278,138
+    L 274,143
+    L 272,149
+    L 271,156
+    L 272,163
+    L 274,169
+    L 278,175
+    L 283,180
+    L 289,183
+    L 296,185
+    L 302,185
+    L 308,184
+    L 314,183
+    L 320,183
+    L 326,185
+    L 332,188
+    L 338,193
+    L 343,198
+    L 346,203
+    L 347,208
+    L 345,212
+    L 341,214
+    L 336,213
+    L 330,209
+    L 324,205
+    L 317,202
+    L 309,200
+    L 300,199
+    L 292,200
+    L 285,202
+    L 278,205
+    L 270,207
+    L 261,207
+    L 251,205
+    L 241,202
+    L 230,199
+    L 218,197
+    L 208,197
+    L 199,199
+    L 191,202
+    L 183,205
+    L 174,207
+    L 164,207
+    L 153,206
+    L 142,203
+    L 131,199
+    L 120,196
+    L 109,194
+    L 98,194
+    L 88,196
+    L 79,199
+    L 71,203
+    L 63,206
+    L 55,207
+    L 47,205
+    L 42,200
+    L 38,193
+    L 36,185
+    L 35,177
+    L 35,168
+    L 36,158
+    L 37,148
+    L 38,138
+    L 39,128
+    L 40,118
+    L 41,108
+    L 41,98
+    L 41,88
+    L 41,78
+    L 41,68
+    L 41,58
+    L 42,48
+    Z
+  " fill="#1a3a6b" stroke="rgba(184,150,62,0.5)" stroke-width="1.2"/>
+
+  <!-- Boston area subtle highlight -->
+  <circle cx="232" cy="118" r="6" fill="rgba(184,150,62,0.15)" stroke="rgba(184,150,62,0.3)" stroke-width="1"/>
+  <text x="240" y="114" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(184,150,62,0.5)">Boston</text>
+
+  <!-- Quincy pin — south of Boston on the coast -->
+  <!-- Pin body -->
+  <circle cx="236" cy="132" r="10" fill="#b8963e" opacity="0.25"/>
+  <circle cx="236" cy="132" r="6" fill="#b8963e" opacity="0.5"/>
+  <circle cx="236" cy="132" r="3.5" fill="#b8963e"/>
+  <!-- Pin pulse ring animation -->
+  <circle cx="236" cy="132" r="10" fill="none" stroke="#b8963e" stroke-width="1.5" opacity="0.6">
+    <animate attributeName="r" from="6" to="18" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" from="0.6" to="0" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Quincy label -->
+  <text x="248" y="130" font-family="DM Sans,sans-serif" font-size="10" font-weight="700" fill="#b8963e">Quincy</text>
+  <text x="248" y="142" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(200,216,232,0.7)">Massachusetts</text>
+
+  <!-- Compass rose subtle -->
+  <text x="358" y="42" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(184,150,62,0.35)" text-anchor="middle">N</text>
+  <line x1="358" y1="44" x2="358" y2="55" stroke="rgba(184,150,62,0.35)" stroke-width="1"/>
+  <polygon points="358,44 355,52 358,50 361,52" fill="rgba(184,150,62,0.35)"/>
+</svg>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(8,21,42,0.95),transparent);padding:14px 16px;z-index:2;">
+          <div class="contact-card-label" style="margin-bottom:2px;">Location</div>
+          <div class="contact-card-value" style="font-size:0.9rem;">Quincy, Massachusetts</div>
+        </div>
       </div>
     </div>
+
     <div class="contact-cta reveal">
-      <p>Whether you're a state agency, municipality, nonprofit, or organization seeking expert policy support &mdash;<br>we're here to help you move from analysis to action.</p>
-      <div id="contactForm" style="max-width:600px;margin:0 auto;text-align:left;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-          <div>
-            <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Your Name</label>
-            <input id="cf-name" type="text" placeholder="Full name" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
-          </div>
-          <div>
-            <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Your Email</label>
-            <input id="cf-email" type="email" placeholder="your@email.com" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
-          </div>
-        </div>
-        <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Organization</label>
-          <input id="cf-org" type="text" placeholder="City, agency, or organization name" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
-        </div>
-        <div style="margin-bottom:24px;">
-          <label style="display:block;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Message</label>
-          <textarea id="cf-message" rows="5" placeholder="Tell us how we can help..." style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:14px 16px;font-size:0.9rem;font-family:'DM Sans',sans-serif;outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'"></textarea>
-        </div>
-        <div style="text-align:center;">
-          <button onclick="submitContactForm()" class="btn-gold" style="border:none;cursor:pointer;font-family:'DM Sans',sans-serif;"><span>Send a Message</span></button>
-        </div>
-        <div id="cf-status" style="margin-top:16px;text-align:center;font-size:0.85rem;display:none;"></div>
-      </div>
+      <p>Whether you&rsquo;re a state agency, municipality, nonprofit, or organization seeking expert policy support &mdash;<br>we&rsquo;re here to help you move from analysis to action.</p>
     </div>
+
   </div>
 </section>
+
+<!-- CONTACT FORM MODAL -->
+<div class="modal-overlay" id="contactFormOverlay" style="z-index:600;">
+  <div class="modal-box" style="max-width:560px;">
+    <div class="modal-top">
+      <button class="modal-close" aria-label="Close" onclick="closeContactForm()">&#x2715;</button>
+      <span class="modal-icon">✉️</span>
+      <div class="modal-title">Send a Message</div>
+      <div class="modal-tag">Jean-Pierre Policy Group</div>
+    </div>
+    <div class="modal-body">
+      <div style="margin-bottom:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <label style="display:block;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Your Name</label>
+          <input id="cf-name" type="text" placeholder="Full name" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:12px 14px;font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Your Email</label>
+          <input id="cf-email" type="email" placeholder="your@email.com" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:12px 14px;font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
+        </div>
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Organization</label>
+        <input id="cf-org" type="text" placeholder="City, agency, or organization name" style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:12px 14px;font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'">
+      </div>
+      <div style="margin-bottom:24px;">
+        <label style="display:block;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Message</label>
+        <textarea id="cf-message" rows="5" placeholder="Tell us how we can help..." style="width:100%;background:rgba(13,31,60,0.8);border:1px solid rgba(184,150,62,0.25);color:var(--white);padding:12px 14px;font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(184,150,62,0.7)'" onblur="this.style.borderColor='rgba(184,150,62,0.25)'"></textarea>
+      </div>
+      <div style="text-align:center;">
+        <button onclick="submitContactForm()" class="modal-cta-link" style="border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.79rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;display:inline-block;padding:15px 40px;">Send Message</button>
+      </div>
+      <div id="cf-status" style="margin-top:16px;text-align:center;font-size:0.85rem;display:none;"></div>
+    </div>
+  </div>
+</div>
 
 <div class="modal-overlay" id="modalOverlay"><div class="modal-box"><div class="modal-top"><button class="modal-close" id="modalClose" aria-label="Close" onclick="closeModal()">&#x2715;</button><span class="modal-icon" id="modalIcon"></span><div class="modal-title" id="modalTitle"></div><div class="modal-tag" id="modalTag"></div></div><div class="modal-body" id="modalBody"></div></div></div>
 
@@ -842,15 +1038,10 @@ function submitContactForm() {
   <div class="footer-copy">&#169; 2026 Jean-Pierre Policy Group &middot; Quincy, MA</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+<script>
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { closeModal(); closeContactForm(); } });
+document.getElementById('contactFormOverlay').addEventListener('click', function(e){ if (e.target === this) closeContactForm(); });
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('modalOverlay').addEventListener('click', function(e){ if (e.target === this) closeModal(); });
 
-var hamburger = document.getElementById('hamburger');
-var mobileMenu = document.getElementById('mobileMenu');
-if (hamburger && mobileMenu) {
-  hamburger.addEventListener('click', function(){
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-    document.
+var hamburger = document.getElem
