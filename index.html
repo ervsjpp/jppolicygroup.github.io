@@ -141,15 +141,16 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);f
 
 /* PUBLICATIONS */
 #publications{padding:80px 64px;background:var(--navy2);border-top:1px solid rgba(184,150,62,0.1);border-bottom:1px solid rgba(184,150,62,0.1);}
-.pub-inner{display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:center;}
-.pub-left p{font-size:0.95rem;color:var(--muted);line-height:1.7;font-weight:300;margin-top:16px;}
+.pub-header{margin-bottom:48px;}
+.pub-header p{font-size:0.95rem;color:var(--muted);line-height:1.7;font-weight:300;margin-top:16px;max-width:640px;}
+.pub-inner{display:block;}
 .pub-items{display:flex;flex-direction:column;gap:0;}
 .pub-item{display:flex;align-items:center;gap:24px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.05);transition:all 0.3s;}
 .pub-item:first-child{border-top:1px solid rgba(255,255,255,0.05);}
 .pub-item:hover{padding-left:12px;}
 .pub-dot{width:8px;height:8px;flex-shrink:0;background:var(--gold);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);}
 .pub-text{font-size:0.88rem;color:var(--text);line-height:1.5;font-weight:300;flex:1;}
-.pub-tag{font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:700;flex-shrink:0;}
+.pub-tag{font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:700;flex-shrink:0;white-space:nowrap;}
 
 /* CONTACT */
 #contact{padding:0;position:relative;}
@@ -199,7 +200,10 @@ footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-b
   .services-grid,.focus-grid,.contact-grid{grid-template-columns:1fr;}
   .services-header{flex-direction:column;}
   .focus-header{grid-template-columns:1fr;}
-  .pub-inner{grid-template-columns:1fr;gap:32px;}
+  .pub-header h2{font-size:clamp(1.8rem,6vw,2.6rem);}
+  .pub-text{font-size:0.84rem;}
+  .pub-tag{font-size:0.65rem;}
+  .pub-item{gap:14px;}
 }
 
 /* ── HAMBURGER (phone only) ───────────────────────────────────── */
@@ -263,7 +267,11 @@ footer{background:#03080f;padding:40px 64px;display:flex;justify-content:space-b
   .services-grid,.focus-grid,.contact-grid{grid-template-columns:1fr;}
   .services-header{flex-direction:column;}
   .focus-header{grid-template-columns:1fr;}
-  .pub-inner{grid-template-columns:1fr;gap:32px;}
+  .pub-header h2{font-size:clamp(1.6rem,5vw,2.2rem);}
+  .pub-text{font-size:0.82rem;line-height:1.55;}
+  .pub-tag{font-size:0.63rem;letter-spacing:1px;}
+  .pub-item{gap:12px;padding:16px 0;}
+  .pub-item[style]{flex-direction:column!important;}
   .modal-top{padding:32px 24px 28px;}
   .modal-body{padding:32px 24px 40px;}
 }
@@ -655,12 +663,12 @@ function submitContactForm() {
 <!-- PUBLICATIONS -->
 <section id="publications">
   <div class="section-inner">
+    <div class="pub-header reveal">
+      <div class="label">Publications &amp; Work</div>
+      <h2>Policy Writing<br>&amp; Selected Work</h2>
+      <p>Published analysis, legislative work, and applied research spanning governance, international development, immigration, and domestic policy &mdash; distributed to advocacy coalitions, municipal leaders, and policymakers.</p>
+    </div>
     <div class="pub-inner reveal">
-      <div class="pub-left">
-        <div class="label">Publications &amp; Work</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.8rem);">Policy Writing<br>&amp; Selected Work</h2>
-        <p>Published analysis, legislative work, and applied research spanning governance, international development, immigration, and domestic policy &mdash; distributed to advocacy coalitions, municipal leaders, and policymakers.</p>
-      </div>
       <div class="pub-items">
 
         <div class="pub-category">Published Articles</div>
@@ -1044,4 +1052,33 @@ document.getElementById('contactFormOverlay').addEventListener('click', function
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('modalOverlay').addEventListener('click', function(e){ if (e.target === this) closeModal(); });
 
-var hamburger = document.getElem
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  var mobileLinks = mobileMenu.querySelectorAll('a');
+  mobileLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  if (nav) {
+    if (window.scrollY > 50) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }
+});
+</script>
+</body>
+</html>
