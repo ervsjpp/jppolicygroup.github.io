@@ -385,19 +385,45 @@ function submitContactForm() {
     status.textContent = 'Please fill in your name, email, and message before sending.';
     return;
   }
-  var subject = encodeURIComponent('New Inquiry from ' + name + (org ? ' — ' + org : ''));
-  var body = encodeURIComponent(
-    'Name: ' + name + '\n' +
-    'Email: ' + email + '\n' +
-    (org ? 'Organization: ' + org + '\n' : '') +
-    '\nMessage:\n' + message
-  );
-  var _em = 'ervens' + '@' + 'jppolicygroup' + '.' + 'com';
-  window.location.href = 'mailto:' + _em + '?subject=' + subject + '&body=' + body;
   status.style.display = 'block';
   status.style.color = '#b8963e';
-  status.textContent = 'Opening your email client — thank you for reaching out!';
-  setTimeout(closeContactForm, 2200);
+  status.textContent = 'Sending your message…';
+  var btn = document.querySelector('[onclick="submitContactForm()"]');
+  if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; }
+  fetch('https://formspree.io/f/mykberog', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      organization: org || '(not provided)',
+      message: message,
+      _subject: 'New Inquiry from ' + name + (org ? ' — ' + org : ''),
+      _replyto: email
+    })
+  })
+  .then(function(res) {
+    if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+    if (res.ok) {
+      status.style.color = '#6fcf97';
+      status.textContent = '✓ Message sent! We will be in touch shortly.';
+      document.getElementById('cf-name').value = '';
+      document.getElementById('cf-email').value = '';
+      document.getElementById('cf-org').value = '';
+      document.getElementById('cf-message').value = '';
+      setTimeout(closeContactForm, 2800);
+    } else {
+      res.json().then(function(data) {
+        status.style.color = '#e07070';
+        status.textContent = (data && data.error) ? data.error : 'Something went wrong. Please try again or email us directly at ervens@jppolicygroup.com';
+      });
+    }
+  })
+  .catch(function() {
+    if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+    status.style.color = '#e07070';
+    status.textContent = 'Network error. Please email us directly at ervens@jppolicygroup.com';
+  });
 }
 </script>
 </head>
